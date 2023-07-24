@@ -1,0 +1,49 @@
+{
+  "id": "whats_app",
+  "type": "SharedSlice",
+  "name": "WhatsApp",
+  "description": "WhatsApp",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "conteudo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Conteúdo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "url_whatsapp": {
+          "type": "Text",
+          "config": { "label": "URL WhatsApp", "placeholder": "" }
+        },
+        "imagem_destacada": {
+          "type": "Image",
+          "config": {
+            "label": "Imagem destacada",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

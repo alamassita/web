@@ -16,7 +16,9 @@
             "depoimentos": { "type": "SharedSlice" },
             "quem_sou_eu": { "type": "SharedSlice" },
             "intro_home": { "type": "SharedSlice" },
-            "whats_app": { "type": "SharedSlice" }
+            "whats_app": { "type": "SharedSlice" },
+            "cases_portfolio": { "type": "SharedSlice" },
+            "formulario": { "type": "SharedSlice" }
           }
         }
       }

@@ -156,19 +156,19 @@ const WhatsApp = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div class="whatsApp-wrapper page-wrapper">
-        <div class="whatsApp-inner">
-          <div class="whatsApp-content">
+      <div className="whatsApp-wrapper page-wrapper">
+        <div className="whatsApp-inner">
+          <div className="whatsApp-content">
             <PrismicRichText field={slice.primary.titulo} />
-            <div class="whatsApp-content--desc">
+            <div className="whatsApp-content--desc">
               <PrismicRichText field={slice.primary.conteudo} />
               <Link href={slice.primary.url_whatsapp} target="_blank">
                 <ButtonWaterColor text="Enviar mensagem" variation="primary" />
               </Link>
             </div>
           </div>
-          <div class="whatsApp-image">
-            <div class="whatsApp-image--wrapper">
+          <div className="whatsApp-image">
+            <div className="whatsApp-image--wrapper">
               <Link
                 className="whatsAnimateButton"
                 href={slice.primary.url_whatsapp}

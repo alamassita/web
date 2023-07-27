@@ -71,6 +71,16 @@ const ButtonWrapper = styled.div`
       filter: grayscale(0.7);
     }
   }
+  &.white {
+    color: rgb(var(--nudge));
+    &:before {
+      filter: grayscale(0.7);
+      opacity: 0.1;
+    }
+    &:after {
+      mix-blend-mode: overlay;
+    }
+  }
 `;
 
 const ButtonWaterColor = ({ text, variation }) => {

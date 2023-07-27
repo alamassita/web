@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 import styled from "styled-components";
@@ -160,6 +160,25 @@ const MainMenu = styled.nav`
 
 const Menu = ({ activePage, menuPosition }) => {
   const [showSubMenu, setShowSubMenu] = useState(false);
+  const dropdown = useRef(null);
+  const trigger = useRef(null);
+
+  useEffect(() => {
+    // only add the event listener when the dropdown is opened
+    if (!showSubMenu) return;
+    function handleClick(event) {
+      console.log(event);
+      if (!trigger.current.contains(event.target)) {
+        if (dropdown.current && !dropdown.current.contains(event.target)) {
+          setShowSubMenu(false);
+        }
+      }
+    }
+    window.addEventListener("click", handleClick);
+    // clean up
+    return () => window.removeEventListener("click", handleClick);
+  }, [showSubMenu]);
+
   return (
     <MainMenu>
       <ul>
@@ -182,14 +201,15 @@ const Menu = ({ activePage, menuPosition }) => {
           >
             <div
               className="nav-link nav-trigger"
-              onClick={() => setShowSubMenu((prev) => !prev)}
+              onClick={() => setShowSubMenu((b) => !b)}
+              ref={trigger}
             >
               Portfólio
               <IconChevronDown />
             </div>
             <AnimatePresence>
               {showSubMenu && (
-                <div className="nav-submenu--inner">
+                <div className="nav-submenu--inner" ref={dropdown}>
                   <motion.div
                     className="nav-submenu"
                     initial={{ opacity: 0, y: -14 }}

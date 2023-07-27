@@ -4,12 +4,155 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Portfolio Category documents
+ */
+interface CategoryDocumentData {
+  /**
+   * Titulo field in *Portfolio Category*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.titulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtitulo field in *Portfolio Category*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.subtitulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitulo: prismic.KeyTextField;
+
+  /**
+   * Conteúdo field in *Portfolio Category*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.conteudo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * URL field in *Portfolio Category*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  url: prismic.LinkToMediaField;
+
+  /**
+   * Imagem destacada field in *Portfolio Category*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.imagem_destacada
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+}
+
+/**
+ * Portfolio Category document from Prismic
+ *
+ * - **API ID**: `category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CategoryDocumentData>,
+    "category",
+    Lang
+  >;
+
+/**
+ * Content for Depoimento documents
+ */
+interface DepoimentoDocumentData {
+  /**
+   * Nome field in *Depoimento*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimento.nome
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  nome: prismic.RichTextField;
+
+  /**
+   * Foto field in *Depoimento*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimento.foto
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  foto: prismic.ImageField<never>;
+
+  /**
+   * Conteúdo field in *Depoimento*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimento.conteudo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Citação field in *Depoimento*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimento.citacao
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  citacao: prismic.RichTextField;
+}
+
+/**
+ * Depoimento document from Prismic
+ *
+ * - **API ID**: `depoimento`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DepoimentoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<DepoimentoDocumentData>,
+    "depoimento",
+    Lang
+  >;
+
 type HomepageDocumentDataSlicesSlice =
   | HeroSlice
   | DepoimentosSlice
   | QuemSouEuSlice
   | IntroHomeSlice
-  | WhatsAppSlice;
+  | WhatsAppSlice
+  | CasesPortfolioSlice
+  | FormularioSlice;
 
 /**
  * Content for homepage documents
@@ -75,7 +218,88 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument;
+/**
+ * Content for Portfolio documents
+ */
+interface PortfolioDocumentData {
+  /**
+   * Categoria field in *Portfolio*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.categoria
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  categoria: prismic.ContentRelationshipField;
+}
+
+/**
+ * Portfolio document from Prismic
+ *
+ * - **API ID**: `portfolio`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PortfolioDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<PortfolioDocumentData>,
+    "portfolio",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | CategoryDocument
+  | DepoimentoDocument
+  | HomepageDocument
+  | PortfolioDocument;
+
+/**
+ * Primary content in *CasesPortfolio → Items*
+ */
+export interface CasesPortfolioSliceDefaultItem {
+  /**
+   * Categoria field in *CasesPortfolio → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_portfolio.items[].categoria
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  categoria: prismic.ContentRelationshipField;
+}
+
+/**
+ * Default variation for CasesPortfolio Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesPortfolioSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<CasesPortfolioSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *CasesPortfolio*
+ */
+type CasesPortfolioSliceVariation = CasesPortfolioSliceDefault;
+
+/**
+ * CasesPortfolio Shared Slice
+ *
+ * - **API ID**: `cases_portfolio`
+ * - **Description**: CasesPortfolio
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesPortfolioSlice = prismic.SharedSlice<
+  "cases_portfolio",
+  CasesPortfolioSliceVariation
+>;
 
 /**
  * Default variation for Depoimentos Slice
@@ -165,6 +389,71 @@ type DepoimentosSliceVariation =
 export type DepoimentosSlice = prismic.SharedSlice<
   "depoimentos",
   DepoimentosSliceVariation
+>;
+
+/**
+ * Primary content in *Formulario → Primary*
+ */
+export interface FormularioSliceDefaultPrimary {
+  /**
+   * Titulo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtitulo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteudo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Formulario Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FormularioSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FormularioSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Formulario*
+ */
+type FormularioSliceVariation = FormularioSliceDefault;
+
+/**
+ * Formulario Shared Slice
+ *
+ * - **API ID**: `formulario`
+ * - **Description**: Formulario
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FormularioSlice = prismic.SharedSlice<
+  "formulario",
+  FormularioSliceVariation
 >;
 
 /**
@@ -542,13 +831,25 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CategoryDocument,
+      CategoryDocumentData,
+      DepoimentoDocument,
+      DepoimentoDocumentData,
       HomepageDocument,
       HomepageDocumentData,
+      PortfolioDocument,
+      PortfolioDocumentData,
       AllDocumentTypes,
+      CasesPortfolioSlice,
+      CasesPortfolioSliceVariation,
+      CasesPortfolioSliceDefault,
       DepoimentosSlice,
       DepoimentosSliceVariation,
       DepoimentosSliceDefault,
       DepoimentosSliceCallToAction,
+      FormularioSlice,
+      FormularioSliceVariation,
+      FormularioSliceDefault,
       HeroSlice,
       HeroSliceVariation,
       HeroSliceDefault,

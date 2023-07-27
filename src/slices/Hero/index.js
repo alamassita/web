@@ -94,7 +94,7 @@ const HeroHome = styled.div`
 `;
 
 const Hero = ({ slice }) => {
-  console.log(slice);
+  // console.log(slice);
   return (
     <HeroSection
       data-slice-type={slice.slice_type}

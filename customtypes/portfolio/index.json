@@ -1,0 +1,16 @@
+{
+  "id": "portfolio",
+  "label": "Portfolio",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "categoria": {
+        "type": "Link",
+        "config": { "label": "Categoria", "select": "document" }
+      }
+    }
+  }
+}

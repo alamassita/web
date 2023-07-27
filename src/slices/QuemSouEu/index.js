@@ -86,6 +86,7 @@ const QuemSouEu = ({ slice }) => {
               <PrismicNextImage
                 field={slice.primary.imagem_de}
                 imgixParams={{ q: 100 }}
+                className="img-fluid"
               />
             </div>
             <div className="quem-content">

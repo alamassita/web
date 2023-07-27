@@ -1,0 +1,23 @@
+{
+  "id": "cases_portfolio",
+  "type": "SharedSlice",
+  "name": "CasesPortfolio",
+  "description": "CasesPortfolio",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "categoria": {
+          "type": "Link",
+          "config": { "label": "Categoria", "select": "document" }
+        }
+      }
+    }
+  ]
+}

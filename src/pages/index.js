@@ -27,8 +27,40 @@ export async function getStaticProps() {
   // drafts from the Page Builder.
   const client = prismic.createClient(sm.apiEndpoint);
   // The query fetches the page's data based on the current URL.
-  //const page = await client.getSingle("homepage");
-  const page = await client.getByUID("homepage", "homepage");
+  // const page = await client.getSingle("homepage", {
+  //   graphQuery: `{
+  //     homepage {
+  //       slices {
+  //         ...on cases_portfolio {
+  //           variation {
+  //             ...on default {
+  //               items {
+  //                 categoria {
+  //                   ...on category {
+  //                     titulo
+  //                     subtitulo
+  //                     conteudo
+  //                     imagem_destacada
+  //                   }
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }`,
+  // });
+  const page = await client.getByUID("homepage", "homepage", {
+    fetchLinks: [
+      "category.uid",
+      "category.titulo",
+      "category.conteudo",
+      "category.subtitulo",
+      "category.imagem_destacada",
+      "category.url",
+    ],
+  });
 
   return {
     props: { page },

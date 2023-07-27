@@ -1,3 +1,4 @@
 import ButtonWaterColor from "./ButtonWaterColor";
+import Button from "./Button";
 
-export { ButtonWaterColor };
+export { Button, ButtonWaterColor };

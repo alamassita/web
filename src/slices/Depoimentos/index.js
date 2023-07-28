@@ -4,12 +4,14 @@
  * @param {DepoimentosProps}
  */
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 import { ButtonWaterColor } from "../../components/Button";
 import HeartBG from "../../../public/images/heartBG-001.svg";
+
+import { motion, useInView } from "framer-motion";
 
 import styled from "styled-components";
 
@@ -66,6 +68,65 @@ const CtaSection = styled.div`
       margin-bottom: 1.5em;
     }
   }
+  // Animation
+  .c-transition {
+    margin: rem(80) 0;
+    overflow: hidden;
+    position: relative;
+    
+    &::before {
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/204808/ink-photo-frame.png');
+      background-size: 100% 100%;
+      background-position: 50% 50%;
+      content: '';
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+    
+    &::after {
+      //animation: ink-transition 1.5s steps(39) 0.5s forwards;
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/204808/ink-transition-sprite.png');
+      background-size: 100% 100%;
+      content: '';
+      height: 100%;
+      left: 50%;
+      position: absolute;
+      top: 0;
+      transform: translateX(-1.25%);
+      width: 4000%;
+    }
+    
+    &.is-active::after {
+      animation: ink-transition 2s steps(39) 0.5s forwards;
+    }
+    &.is-active .c-transition__img {
+      opacity: 1;
+    }
+  }
+  
+
+  .c-transition__img {
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    width: 100%;
+  }
+  @keyframes ink-transition {
+    0% {
+      transform: translateX(-1.25%);
+    }
+  
+    99% {
+      transform: translateX(-98.75%);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateX(-98.75%);
+      opacity: 0;
+    }
+  }
   @media screen and (min-width: 1420px) {
     
     .testimonials-content {
@@ -77,6 +138,14 @@ const CtaSection = styled.div`
 `;
 
 const Depoimentos = ({ slice }) => {
+  const imageWaterColorRef = useRef(null);
+  const isInView = useInView(imageWaterColorRef);
+
+  useEffect(() => {
+    console.log("Element is in view: ", isInView);
+    imageWaterColorRef.current.classList.toggle("is-active");
+  }, [isInView]);
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -87,10 +156,16 @@ const Depoimentos = ({ slice }) => {
           <div className="testimonials-wrapper">
             <div className="testimonials-inner">
               <div className="testimonials-image">
-                <PrismicNextImage
-                  field={slice.primary.imagem_destacada}
-                  imgixParams={{ q: 100 }}
-                />
+                <motion.div
+                  className="js-ink-trigger c-transition "
+                  ref={imageWaterColorRef}
+                >
+                  <PrismicNextImage
+                    field={slice.primary.imagem_destacada}
+                    imgixParams={{ q: 100 }}
+                    className="c-transition__img"
+                  />
+                </motion.div>
               </div>
               <div className="testimonials-content">
                 <div className="testimonials-title">

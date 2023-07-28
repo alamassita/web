@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Link from "next/link";
 
 import { Button } from "../Button";
+import { IconMailCheck, IconMailError } from "../Icons";
 
 import styled from "styled-components";
 
@@ -19,7 +21,7 @@ const FormGeneralWrapper = styled.div`
     margin-bottom: 1.5rem;
     div {
       padding-top: 1rem;
-      color: #962222;
+      color: rgb(var(--danger));
       font-family: var(--font-geomanist);
       font-size: 0.9125rem;
       font-style: normal;
@@ -66,13 +68,104 @@ const FormGeneralWrapper = styled.div`
   .button-group {
     margin-top: 2rem;
   }
+  .message {
+    display: flex;
+    padding: 1rem 2rem;
+    grid-gap: 1rem;
+    align-items: center;
+    color: rgb(var(--gray-700));
+    font-family: var(--font-geomanist);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.01625rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    a {
+      text-decoration: underline;
+    }
+    &.message-sucess {
+      border: 1px solid rgba(var(--teal), 0.5);
+      background-color: rgba(var(--teal), 0.1);
+      color: rgb(var(--teal));
+    }
+    &.message-error {
+      border: 1px solid rgba(var(--danger), 0.5);
+      background-color: rgba(var(--danger), 0.1);
+      color: rgb(var(--danger));
+    }
+  }
 `;
 
 const FormGeneral = () => {
+  //   Setting button text
+  const [buttonText, setButtonText] = useState("Enviar mensagem");
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showFailureMessage, setShowFailureMessage] = useState(false);
+
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    setButtonText("Enviando...");
+    const res = await fetch("/api/sendgrid", {
+      body: JSON.stringify({
+        name: values.nome,
+        email: values.email,
+        message: values.mensagem,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      setShowSuccessMessage(false);
+      setShowFailureMessage(true);
+      setButtonText("Enviar mensagem");
+
+      return;
+    }
+    console.log("end form");
+    setShowSuccessMessage(true);
+    setShowFailureMessage(false);
+    setButtonText("Enviar mensagem");
+    resetForm({ values: "" });
+  };
   return (
     <FormGeneralWrapper>
+      {showSuccessMessage && (
+        <div className="message message-sucess">
+          <div className="message-icon">
+            <IconMailCheck />
+          </div>
+          <div className="message-content">
+            Sua mensagem foi enviada com sucesso!
+          </div>
+        </div>
+      )}
+      {showFailureMessage && (
+        <div className="message message-error">
+          <div className="message-icon">
+            <IconMailError />
+          </div>
+          <div className="message-content">
+            Ops! Algo saiu mal! Tente outra vez em uns minutos ou entre em
+            contato por{" "}
+            <Link
+              className="link-whats"
+              href="https://api.whatsapp.com/send?phone=5511972576023"
+            >
+              WhatsApp
+            </Link>
+            .
+          </div>
+        </div>
+      )}
+
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ nome: "", email: "", mensagem: "" }}
         validate={(values) => {
           const errors = {};
           if (!values.email) {
@@ -87,11 +180,14 @@ const FormGeneral = () => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+          setSubmitting(false);
+          handleSubmit(values, { setSubmitting, resetForm });
+          //   setTimeout(() => {
+          //     alert(JSON.stringify(values, null, 2));
+          //     setSubmitting(false);
+          //     handleSubmit(values);
+          //   }, 400);
         }}
       >
         {({ isSubmitting }) => (
@@ -113,7 +209,7 @@ const FormGeneral = () => {
             </div>
             <div className="button-group">
               <button type="submit" disabled={isSubmitting}>
-                <Button text="Enviar mensagem" variation="primary" />
+                <Button text={buttonText} variation="primary" />
               </button>
             </div>
           </Form>

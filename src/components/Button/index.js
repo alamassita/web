@@ -1,4 +1,5 @@
 import ButtonWaterColor from "./ButtonWaterColor";
 import Button from "./Button";
+import HamburguerMenu from "./HamburguerMenu";
 
-export { Button, ButtonWaterColor };
+export { Button, ButtonWaterColor, HamburguerMenu };

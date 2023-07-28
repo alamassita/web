@@ -30,7 +30,7 @@ const SocialMenu = styled.div`
 
 const SocialMediaMenu = ({ menuPosition }) => {
   return (
-    <SocialMenu>
+    <SocialMenu className="social-menu">
       <ul>
         {menuPosition === "footer" ? (
           <li>

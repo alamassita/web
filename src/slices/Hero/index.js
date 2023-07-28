@@ -73,7 +73,7 @@ const HeroHome = styled.div`
     }
   }
   .hero--large-description {
-    color: var(--primary-200);
+    color: rgb(var(--primary-300));
     text-align: center;
     font-family: var(--font-geomanist);
     font-size: 1.125rem;
@@ -89,7 +89,8 @@ const HeroHome = styled.div`
     top: 0;
     right: 0;
     z-index: -1;
-    width: clamp(min(20vw, 20rem), 920px, max(90vw, 55rem));
+    height: auto;
+    width: clamp(min(20vw, 20rem), 920px, max(60vw, 40rem));
   }
 `;
 

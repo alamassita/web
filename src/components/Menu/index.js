@@ -4,6 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 import { IconChevronDown } from "../Icons";
+import SocialMediaMenu from "../SocialMediaMenu";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -156,9 +157,24 @@ const MainMenu = styled.nav`
     display: flex;
     grid-gap: 1rem;
   }
+  @media screen and (max-width: 1240px) {
+    .nav-submenu--inner:before {
+      left: 154px;
+    }
+    .nav-submenu--wrapper__footer .nav-submenu--inner {
+      left: 0;
+      transform: translate3d(-94px, -1rem, 0);
+    }
+    .nav-submenu--wrapper__header .nav-submenu--inner {
+      left: 0;
+      transform: translate3d(-94px, 1rem, 0);
+    }
+  }
+  @media screen and (max-width: 1001px) {
+  }
 `;
 
-const Menu = ({ activePage, menuPosition }) => {
+const Menu = ({ handleMobileMenu, activePage, menuPosition }) => {
   const [showSubMenu, setShowSubMenu] = useState(false);
   const dropdown = useRef(null);
   const trigger = useRef(null);
@@ -180,87 +196,96 @@ const Menu = ({ activePage, menuPosition }) => {
   }, [showSubMenu]);
 
   return (
-    <MainMenu>
-      <ul>
-        {menuPosition === "footer" ? (
+    <MainMenu className={`main-nav ${handleMobileMenu ? "is-active" : ""}`}>
+      <div className="main-nav--inner">
+        <ul>
+          {menuPosition === "footer" ? (
+            <li>
+              <Link className="nav-link" href="/">
+                Home
+              </Link>
+            </li>
+          ) : (
+            ""
+          )}
           <li>
-            <Link className="nav-link" href="/">
-              Home
+            <div
+              className={`nav-submenu--wrapper ${showSubMenu ? "open" : ""} ${
+                menuPosition === "footer"
+                  ? "nav-submenu--wrapper__footer"
+                  : "nav-submenu--wrapper__header"
+              }`}
+            >
+              <div
+                className="nav-link nav-trigger"
+                onClick={() => setShowSubMenu((b) => !b)}
+                ref={trigger}
+              >
+                Portfólio
+                <IconChevronDown />
+              </div>
+              <AnimatePresence>
+                {showSubMenu && (
+                  <div className="nav-submenu--inner" ref={dropdown}>
+                    <motion.div
+                      className="nav-submenu"
+                      initial={{ opacity: 0, y: -14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -14 }}
+                    >
+                      <Link
+                        className="nav-link nav-link--internal nav-link--internal__signature"
+                        href="/portfolio/signature"
+                      >
+                        <>
+                          <strong>Artes únicas</strong>
+                          <h4>Signature</h4>
+                          <p>
+                            Identidade visual 100% personalizada para o seu dia
+                            perfeito.
+                          </p>
+                        </>
+                      </Link>
+                      <Link
+                        className="nav-link nav-link--internal nav-link--internal__pret"
+                        href="/portfolio/pret-a-porter"
+                      >
+                        <>
+                          <strong>Soluções com essência</strong>
+                          <h4>Prêt-à-porter</h4>
+                          <p>Uma coleção de trabalhos para se inspirar</p>
+                        </>
+                      </Link>
+                    </motion.div>
+                  </div>
+                )}
+              </AnimatePresence>
+            </div>
+          </li>
+          <li>
+            <Link className="nav-link" href="/como-comprar">
+              Como comprar
             </Link>
           </li>
+          <li>
+            <Link className="nav-link" href="/quem-somos">
+              Quem somos
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-link" href="/contato">
+              Contato
+            </Link>
+          </li>
+        </ul>
+        {menuPosition === "header" ? (
+          <div className="socialMediaMobile">
+            <SocialMediaMenu />
+          </div>
         ) : (
           ""
         )}
-        <li>
-          <div
-            className={`nav-submenu--wrapper ${showSubMenu ? "open" : ""} ${
-              menuPosition === "footer"
-                ? "nav-submenu--wrapper__footer"
-                : "nav-submenu--wrapper__header"
-            }`}
-          >
-            <div
-              className="nav-link nav-trigger"
-              onClick={() => setShowSubMenu((b) => !b)}
-              ref={trigger}
-            >
-              Portfólio
-              <IconChevronDown />
-            </div>
-            <AnimatePresence>
-              {showSubMenu && (
-                <div className="nav-submenu--inner" ref={dropdown}>
-                  <motion.div
-                    className="nav-submenu"
-                    initial={{ opacity: 0, y: -14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -14 }}
-                  >
-                    <Link
-                      className="nav-link nav-link--internal nav-link--internal__signature"
-                      href="/portfolio/signature"
-                    >
-                      <>
-                        <strong>Artes únicas</strong>
-                        <h4>Signature</h4>
-                        <p>
-                          Identidade visual 100% personalizada para o seu dia
-                          perfeito.
-                        </p>
-                      </>
-                    </Link>
-                    <Link
-                      className="nav-link nav-link--internal nav-link--internal__pret"
-                      href="/portfolio/pret-a-porter"
-                    >
-                      <>
-                        <strong>Soluções com essência</strong>
-                        <h4>Prêt-à-porter</h4>
-                        <p>Uma coleção de trabalhos para se inspirar</p>
-                      </>
-                    </Link>
-                  </motion.div>
-                </div>
-              )}
-            </AnimatePresence>
-          </div>
-        </li>
-        <li>
-          <Link className="nav-link" href="/como-comprar">
-            Como comprar
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-link" href="/quem-somos">
-            Quem somos
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-link" href="/contato">
-            Contato
-          </Link>
-        </li>
-      </ul>
+      </div>
     </MainMenu>
   );
 };

@@ -91,6 +91,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-gallery);
+  font-weight: 400;
 }
 
 p {
@@ -101,6 +102,9 @@ p {
   font-weight: 300;
   line-height: 1.5em;
   margin-bottom: 1.5rem;
+}
+p strong {
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 1001px) {

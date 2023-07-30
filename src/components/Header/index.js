@@ -117,7 +117,7 @@ const WrapperHeader = styled.header`
   }
 `;
 
-const Header = ({ activePage }) => {
+const Header = ({ activePage, pageType }) => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const clickMenuChecker = useRef(null);
   const close = useRef(null);
@@ -160,7 +160,11 @@ const Header = ({ activePage }) => {
           ) : (
             ""
           )}
-          <Menu activePage={activePage} menuPosition="header" />
+          <Menu
+            activePage={activePage}
+            pageType={pageType}
+            menuPosition="header"
+          />
         </div>
 
         <SocialMediaMenu />

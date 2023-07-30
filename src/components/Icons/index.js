@@ -4,6 +4,7 @@ import IconInstagram from "./IconInstagram";
 import IconMailCheck from "./IconMailCheck";
 import IconMailError from "./IconMailError";
 import IconWhatsApp from "./IconWhatsApp";
+import IconStar from "./IconStar";
 
 export {
   IconChevronDown,
@@ -12,4 +13,5 @@ export {
   IconMailCheck,
   IconMailError,
   IconWhatsApp,
+  IconStar,
 };

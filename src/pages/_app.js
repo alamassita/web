@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 export default function App({ Component, pageProps }) {
   return (
     <div className={`${geomanist.variable} ${gallery.variable}`}>
-      <Header />
+      <Header activePage={pageProps.page.uid} pageType={pageProps.page.type} />
       <Component {...pageProps} />
       <Footer />
     </div>

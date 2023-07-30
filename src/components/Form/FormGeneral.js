@@ -8,7 +8,9 @@ import { IconMailCheck, IconMailError } from "../Icons";
 import styled from "styled-components";
 
 const FormGeneralWrapper = styled.div`
-  max-width: 520px;
+  .form-wrapper {
+    max-width: 520px;
+  }
   button {
     padding: 0;
     border: none;
@@ -127,7 +129,7 @@ const FormGeneral = () => {
 
       return;
     }
-    console.log("end form");
+
     setShowSuccessMessage(true);
     setShowFailureMessage(false);
     setButtonText("Enviar mensagem");
@@ -191,7 +193,7 @@ const FormGeneral = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form>
+          <Form className="form-wrapper">
             <div className="form-group">
               <label htmlFor="nome">Nome</label>
               <Field type="text" id="nome" name="nome" />

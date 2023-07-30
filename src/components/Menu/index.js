@@ -24,6 +24,12 @@ const MainMenu = styled.nav`
     font-size: 1.5rem;
     padding: 0.5rem;
     transition: 300ms color ease-in-out;
+    &.active {
+      color: rgb(var(--primary-300));
+      &:hover {
+        color: rgb(var(--primary-300));
+      }
+    }
     &:hover {
       cursor: pointer;
       color: rgb(var(--teal));
@@ -174,10 +180,12 @@ const MainMenu = styled.nav`
   }
 `;
 
-const Menu = ({ handleMobileMenu, activePage, menuPosition }) => {
+const Menu = ({ activePage, pageType, menuPosition }) => {
   const [showSubMenu, setShowSubMenu] = useState(false);
   const dropdown = useRef(null);
   const trigger = useRef(null);
+
+  console.log("pageType", pageType);
 
   useEffect(() => {
     // only add the event listener when the dropdown is opened
@@ -282,7 +290,10 @@ const Menu = ({ handleMobileMenu, activePage, menuPosition }) => {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="/contato">
+            <Link
+              className={`nav-link ${pageType === "contato" ? "active" : ""}`}
+              href="/contato"
+            >
               Contato
             </Link>
           </li>

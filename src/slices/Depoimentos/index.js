@@ -7,11 +7,16 @@
 import React, { useRef, useEffect } from "react";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import Image from "next/image";
 
 import { ButtonWaterColor } from "../../components/Button";
 import HeartBG from "../../../public/images/heartBG-001.svg";
 import InkPhotoFrame from "../../../public/images/ink-photo-frame.png";
 import InkTransitionSprite from "../../../public/images/ink-transition-sprite.png";
+import TestimonialsImage from "../../../public/images/testimonials-images.png";
+
+import { IconStar } from "../../components/Icons";
+import { CardDepoimento } from "../../components/Card";
 
 import { motion, useInView } from "framer-motion";
 
@@ -169,13 +174,47 @@ const CtaSection = styled.div`
 }
 `;
 
+const DefaultSection = styled.div`
+  .testimonials-top {
+    background: rgba(var(--mint-200), 0.25);
+    padding: 2.5rem 0;
+    .testimonials-top--wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h3 {
+        margin: 0;
+        color: rgb(var(--gray-800));
+        font-size: 2.625rem;
+        line-height: 1.2em;
+        letter-spacing: -0.105rem;
+      }
+      .starts {
+        color: rgb(var(--gray-500));
+        font-family: var(--font-geomanist);
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.5em;
+        display: flex;
+        grid-gap: 1rem;
+        align-items: center;
+      }
+      .icon-star {
+        display: flex;
+      }
+    }
+  }
+`;
+
 const Depoimentos = ({ slice }) => {
   const imageWaterColorRef = useRef(null);
   const isInView = useInView(imageWaterColorRef);
 
   useEffect(() => {
-    console.log("Element is in view: ", isInView);
-    imageWaterColorRef.current.classList.toggle("is-active");
+    if (slice.variation === "callToAction") {
+      imageWaterColorRef.current.classList.toggle("is-active");
+    }
   }, [isInView]);
 
   return (
@@ -183,6 +222,46 @@ const Depoimentos = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
+      {slice.variation === "default" ? (
+        <DefaultSection>
+          <div className="testimonials-top">
+            <div className="page-wrapper">
+              <div className="testimonials-top--wrapper">
+                <PrismicRichText field={slice.primary.titulo} />
+                <div className="starts">
+                  Excelente
+                  <div className="icon-star">
+                    <IconStar />
+                    <IconStar />
+                    <IconStar />
+                    <IconStar />
+                    <IconStar />
+                  </div>
+                  <Image
+                    src={TestimonialsImage.src}
+                    alt="Depoimentos"
+                    width={180}
+                    height={52}
+                    className="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="testimonials-bottom">
+            <div className="page-wrapper">
+              {slice?.items?.map((item, i) => (
+                <div
+                  className={`card-depoimento card-depoimento--${i}`}
+                  key={`cardFeatures${i}`}
+                >
+                  <CardDepoimento data={item} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </DefaultSection>
+      ) : null}
       {slice.variation === "callToAction" ? (
         <CtaSection>
           <div className="testimonials-wrapper">

@@ -80,6 +80,105 @@ export type CategoryDocument<Lang extends string = string> =
     Lang
   >;
 
+type ContatoDocumentDataSlicesSlice = CasesPortfolioSlice | DepoimentosSlice;
+
+/**
+ * Content for Contato documents
+ */
+interface ContatoDocumentData {
+  /**
+   * Titulo field in *Contato*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.titulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtitulo field in *Contato*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.subtitulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *Contato*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.conteudo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Contato*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ContatoDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Contato*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: contato.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Contato*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Contato*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: contato.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Contato document from Prismic
+ *
+ * - **API ID**: `contato`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContatoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ContatoDocumentData>,
+    "contato",
+    Lang
+  >;
+
 /**
  * Content for Depoimento documents
  */
@@ -252,6 +351,7 @@ export type PortfolioDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | CategoryDocument
+  | ContatoDocument
   | DepoimentoDocument
   | HomepageDocument
   | PortfolioDocument;
@@ -302,6 +402,36 @@ export type CasesPortfolioSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Depoimentos → Primary*
+ */
+export interface DepoimentosSliceDefaultPrimary {
+  /**
+   * Título field in *Depoimentos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimentos.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Depoimentos → Items*
+ */
+export interface DepoimentosSliceDefaultItem {
+  /**
+   * Depoimento field in *Depoimentos → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimentos.items[].depoimento
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  depoimento: prismic.ContentRelationshipField;
+}
+
+/**
  * Default variation for Depoimentos Slice
  *
  * - **API ID**: `default`
@@ -310,8 +440,8 @@ export type CasesPortfolioSlice = prismic.SharedSlice<
  */
 export type DepoimentosSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
-  never
+  Simplify<DepoimentosSliceDefaultPrimary>,
+  Simplify<DepoimentosSliceDefaultItem>
 >;
 
 /**
@@ -833,6 +963,8 @@ declare module "@prismicio/client" {
     export type {
       CategoryDocument,
       CategoryDocumentData,
+      ContatoDocument,
+      ContatoDocumentData,
       DepoimentoDocument,
       DepoimentoDocumentData,
       HomepageDocument,

@@ -22,7 +22,8 @@ import styled from "styled-components";
 
 const WhatsAppWrapper = styled.section`
   .whatsApp-wrapper {
-    padding: 12rem 0;
+    padding-top: 12rem;
+    padding-bottom: 12rem;
     --padding-left: 6rem;
     background-image: url(${whatsBG.src});
     background-position: center center;
@@ -148,7 +149,12 @@ const WhatsAppWrapper = styled.section`
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
-    margin-top: -3px;
+    margin-top: -1px;
+  }
+  @media screen and (max-width: 767px) {
+    .whatsApp-inner {
+      flex-direction: column;
+    }
   }
 `;
 

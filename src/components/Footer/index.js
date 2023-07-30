@@ -54,6 +54,17 @@ const FooterWrapper = styled.footer`
       }
     }
   }
+  .main-nav--inner ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  @media screen and (max-width: 767px) {
+    .copyright--inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
 `;
 
 const Footer = () => {

@@ -208,60 +208,69 @@ const Menu = ({ handleMobileMenu, activePage, menuPosition }) => {
           ) : (
             ""
           )}
-          <li>
-            <div
-              className={`nav-submenu--wrapper ${showSubMenu ? "open" : ""} ${
-                menuPosition === "footer"
-                  ? "nav-submenu--wrapper__footer"
-                  : "nav-submenu--wrapper__header"
-              }`}
-            >
+          {menuPosition === "footer" ? (
+            <li>
+              <Link className="nav-link" href="/">
+                Portfolio
+              </Link>
+            </li>
+          ) : (
+            <li>
               <div
-                className="nav-link nav-trigger"
-                onClick={() => setShowSubMenu((b) => !b)}
-                ref={trigger}
+                className={`nav-submenu--wrapper ${showSubMenu ? "open" : ""} ${
+                  menuPosition === "footer"
+                    ? "nav-submenu--wrapper__footer"
+                    : "nav-submenu--wrapper__header"
+                }`}
               >
-                Portfólio
-                <IconChevronDown />
+                <div
+                  className="nav-link nav-trigger"
+                  onClick={() => setShowSubMenu((b) => !b)}
+                  ref={trigger}
+                >
+                  Portfólio
+                  <IconChevronDown />
+                </div>
+                <AnimatePresence>
+                  {showSubMenu && (
+                    <div className="nav-submenu--inner" ref={dropdown}>
+                      <motion.div
+                        className="nav-submenu"
+                        initial={{ opacity: 0, y: -14 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -14 }}
+                      >
+                        <Link
+                          className="nav-link nav-link--internal nav-link--internal__signature"
+                          href="/portfolio/signature"
+                        >
+                          <>
+                            <strong>Artes únicas</strong>
+                            <h4>Signature</h4>
+                            <p>
+                              Identidade visual 100% personalizada para o seu
+                              dia perfeito.
+                            </p>
+                          </>
+                        </Link>
+                        <Link
+                          className="nav-link nav-link--internal nav-link--internal__pret"
+                          href="/portfolio/pret-a-porter"
+                        >
+                          <>
+                            <strong>Soluções com essência</strong>
+                            <h4>Prêt-à-porter</h4>
+                            <p>Uma coleção de trabalhos para se inspirar</p>
+                          </>
+                        </Link>
+                      </motion.div>
+                    </div>
+                  )}
+                </AnimatePresence>
               </div>
-              <AnimatePresence>
-                {showSubMenu && (
-                  <div className="nav-submenu--inner" ref={dropdown}>
-                    <motion.div
-                      className="nav-submenu"
-                      initial={{ opacity: 0, y: -14 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -14 }}
-                    >
-                      <Link
-                        className="nav-link nav-link--internal nav-link--internal__signature"
-                        href="/portfolio/signature"
-                      >
-                        <>
-                          <strong>Artes únicas</strong>
-                          <h4>Signature</h4>
-                          <p>
-                            Identidade visual 100% personalizada para o seu dia
-                            perfeito.
-                          </p>
-                        </>
-                      </Link>
-                      <Link
-                        className="nav-link nav-link--internal nav-link--internal__pret"
-                        href="/portfolio/pret-a-porter"
-                      >
-                        <>
-                          <strong>Soluções com essência</strong>
-                          <h4>Prêt-à-porter</h4>
-                          <p>Uma coleção de trabalhos para se inspirar</p>
-                        </>
-                      </Link>
-                    </motion.div>
-                  </div>
-                )}
-              </AnimatePresence>
-            </div>
-          </li>
+            </li>
+          )}
+
           <li>
             <Link className="nav-link" href="/como-comprar">
               Como comprar

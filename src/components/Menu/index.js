@@ -196,7 +196,7 @@ const Menu = ({ handleMobileMenu, activePage, menuPosition }) => {
   }, [showSubMenu]);
 
   return (
-    <MainMenu className={`main-nav ${handleMobileMenu ? "is-active" : ""}`}>
+    <MainMenu className="main-nav">
       <div className="main-nav--inner">
         <ul>
           {menuPosition === "footer" ? (

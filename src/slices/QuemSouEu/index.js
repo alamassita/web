@@ -34,14 +34,13 @@ const QuemSouWrapper = styled.section`
     .quem-subtitle--content {
       padding-top: 12rem;
       max-width: 224px;
-      color: rgb(var(--primary-300));
-      font-family: var(--font-geomanist);
-      font-size: 0.75rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 150%; /* 1.125rem */
-      letter-spacing: 0.1875rem;
-      text-transform: uppercase;
+      p {
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 150%; /* 1.125rem */
+        letter-spacing: 0.1875rem;
+        text-transform: uppercase;
+      }
     }
     .quem-image {
       img {
@@ -72,9 +71,7 @@ const QuemSouEu = ({ slice }) => {
       <div className="page-wrapper">
         <div className="quem-wrapper">
           <div className="quem-title">
-            <h3>
-              <PrismicRichText field={slice.primary.titulo} />
-            </h3>
+            <PrismicRichText field={slice.primary.titulo} />
           </div>
           <div className="quem-inner">
             <div className="quem-subtitle">

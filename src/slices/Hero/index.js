@@ -10,6 +10,8 @@ import { PrismicNextImage } from "@prismicio/next";
 import { StampAmorCuidado } from "../../components/Stamps";
 import PlantShadowImage from "../../../public/images/plant-shadow--hero.png";
 
+import { motion } from "framer-motion";
+
 import styled from "styled-components";
 
 const HeroSection = styled.section`
@@ -32,7 +34,7 @@ const HeroHome = styled.div`
   }
   .stamp {
     position: absolute;
-    animation: rotate-anima 10s linear infinite;
+    // animation: rotate-anima 10s linear infinite;
     transform-origin: center center;
     z-index: 1;
     top: 0;
@@ -73,16 +75,12 @@ const HeroHome = styled.div`
     }
   }
   .hero--large-description {
-    color: rgb(var(--primary-300));
-    text-align: center;
-    font-family: var(--font-geomanist);
-    font-size: 1.125rem;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 150%; /* 1.6875rem */
-    letter-spacing: -0.01125rem;
     max-width: 720px;
     margin: 0 auto;
+    p {
+      font-size: 1.125rem;
+      text-align: center;
+    }
   }
   img {
     position: absolute;
@@ -91,6 +89,16 @@ const HeroHome = styled.div`
     z-index: -1;
     height: auto;
     width: clamp(min(20vw, 20rem), 920px, max(60vw, 40rem));
+  }
+  @media screen and (max-width: 1001px) {
+    .hero--content {
+      padding: 6rem 3rem;
+    }
+  }
+  @media screen and (max-width: 881px) {
+    .hero--inner {
+      padding: 3rem 0;
+    }
   }
 `;
 
@@ -106,21 +114,25 @@ const Hero = ({ slice }) => {
           <HeroHome>
             <div className="page-wrapper">
               <div className="hero--inner">
-                <div className="stamp">
+                <motion.div
+                  className="stamp"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{
+                    ease: "linear",
+                    duration: 10,
+                    repeat: Infinity,
+                  }}
+                >
                   <StampAmorCuidado />
-                </div>
+                </motion.div>
                 <div className="hero--content">
                   {slice.primary.subtitulo ? (
-                    <h2>
-                      <PrismicRichText field={slice.primary.subtitulo} />
-                    </h2>
+                    <PrismicRichText field={slice.primary.subtitulo} />
                   ) : (
                     ""
                   )}
                   {slice.primary.titulo ? (
-                    <h1>
-                      <PrismicRichText field={slice.primary.titulo} />
-                    </h1>
+                    <PrismicRichText field={slice.primary.titulo} />
                   ) : (
                     ""
                   )}

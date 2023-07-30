@@ -16,6 +16,8 @@ import { ButtonWaterColor } from "../../components/Button";
 
 import whatsBG from "../../../public/images/bgWhatsAppImage.jpg";
 
+import { motion } from "framer-motion";
+
 import styled from "styled-components";
 
 const WhatsAppWrapper = styled.section`
@@ -125,7 +127,7 @@ const WhatsAppWrapper = styled.section`
     position: relative;
   }
   .whatsAnimateButton--animate {
-    animation: rotate-anima 10s linear infinite;
+    // animation: rotate-anima 10s linear infinite;
     transform-origin: center center;
   }
   @keyframes rotate-anima {
@@ -175,7 +177,17 @@ const WhatsApp = ({ slice }) => {
                 target="_blank"
               >
                 <div className="whatsAnimateButton--inner">
-                  <StampEstamosOnline className="whatsAnimateButton--animate" />
+                  <motion.div
+                    className="whatsAnimateButton--animate"
+                    animate={{ rotate: [0, 360] }}
+                    transition={{
+                      ease: "linear",
+                      duration: 10,
+                      repeat: Infinity,
+                    }}
+                  >
+                    <StampEstamosOnline />
+                  </motion.div>
                   <div className="whatsAnimateButton--icon">
                     <IconWhatsApp />
                   </div>

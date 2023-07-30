@@ -37,9 +37,9 @@ const FormularioWrapper = styled.section`
     font-size: 5.125rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.5em;
+    line-height: 1em;
     letter-spacing: -0.1025rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
   }
   p {
     color: rgb(var(--gray-600));
@@ -58,6 +58,14 @@ const FormularioWrapper = styled.section`
   @media screen and (min-width: 999px) {
     .form--content {
       flex: 0 0 50%;
+    }
+  }
+  @media screen and (max-width: 998px) {
+    .form--inner {
+      flex-direction: column;
+    }
+    .form--content {
+      flex: 0 0 100%;
     }
   }
 `;

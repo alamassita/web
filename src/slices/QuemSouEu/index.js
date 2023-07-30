@@ -60,6 +60,21 @@ const QuemSouWrapper = styled.section`
       }
     }
   }
+  @media screen and (max-width: 1139px) {
+    .quem-inner {
+      display: flex;
+      grid-gap: 0;
+      flex-direction: column;
+      max-width: 460px;
+      margin: auto;
+      .quem-image {
+        order: -1;
+      }
+      .quem-subtitle--content {
+        padding-top: 2rem;
+      }
+    }
+  }
 `;
 
 const QuemSouEu = ({ slice }) => {

@@ -10,6 +10,8 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 import { ButtonWaterColor } from "../../components/Button";
 import HeartBG from "../../../public/images/heartBG-001.svg";
+import InkPhotoFrame from "../../../public/images/ink-photo-frame.png";
+import InkTransitionSprite from "../../../public/images/ink-transition-sprite.png";
 
 import { motion, useInView } from "framer-motion";
 
@@ -24,6 +26,7 @@ const CtaSection = styled.div`
   .testimonials-image {
     padding: 0 2rem;
     width: 40%;
+    align-self: center;
     img {
       display: block;
       margin: 0 auto;
@@ -33,13 +36,11 @@ const CtaSection = styled.div`
   .testimonials-content {
     width: 60%;
     background-image: url(${HeartBG.src});
-    background-position: top right -320px;
+    background-position: top 42px right -300px;
     background-repeat: no-repeat;
+    padding: 0 2rem;
   }
   .testimonials-title h3 {
-    
-  }
-  .testimonials-title h3 p{
     margin-bottom: 6rem;
     padding-top: 7rem;
     color: rgb(var(--gray-800));
@@ -75,7 +76,7 @@ const CtaSection = styled.div`
     position: relative;
     
     &::before {
-      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/204808/ink-photo-frame.png');
+      background-image: url(${InkPhotoFrame.src});
       background-size: 100% 100%;
       background-position: 50% 50%;
       content: '';
@@ -86,7 +87,7 @@ const CtaSection = styled.div`
     
     &::after {
       //animation: ink-transition 1.5s steps(39) 0.5s forwards;
-      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/204808/ink-transition-sprite.png');
+      background-image: url(${InkTransitionSprite.src});
       background-size: 100% 100%;
       content: '';
       height: 100%;
@@ -98,7 +99,7 @@ const CtaSection = styled.div`
     }
     
     &.is-active::after {
-      animation: ink-transition 2s steps(39) 0.5s forwards;
+      animation: ink-transition 1s steps(39) 0.3s forwards;
     }
     &.is-active .c-transition__img {
       opacity: 1;
@@ -128,10 +129,41 @@ const CtaSection = styled.div`
     }
   }
   @media screen and (min-width: 1420px) {
-    
+    .c-transition {
+      margin-top: -10rem;
+      margin-bottom: -10rem;
+    }
+    .testimonials-inner {
+      justify-content: space-between;
+    }
+    .testimonials-image{
+      width: 35%;
+    }
     .testimonials-content {
         padding-right: calc((100vw - var(--max-width))/2 + 1rem);
         background-position: top 4rem right calc((100vw - var(--max-width))/2 - 320px);
+    }
+  }
+  @media screen and (max-width: 1220px) {
+    .testimonials-title h3 {
+      padding-right: 6rem;
+      b, strong {
+        padding-right: 0;
+      }
+    }
+  }
+  @media screen and (max-width: 820px) {
+    padding: 6rem 0;
+    .testimonials-inner {
+      flex-direction: column;
+    }
+    .testimonials-image {
+      order: 2;
+      margin-top: 3rem;
+      margin-bottom: 0;
+    }
+    .testimonials-content {
+      width: 100%;
     }
   }
 }
@@ -169,9 +201,7 @@ const Depoimentos = ({ slice }) => {
               </div>
               <div className="testimonials-content">
                 <div className="testimonials-title">
-                  <h3>
-                    <PrismicRichText field={slice.primary.titulo} />
-                  </h3>
+                  <PrismicRichText field={slice.primary.titulo} />
                 </div>
                 <div className="testimonials-desc">
                   <PrismicRichText field={slice.primary.conteudo} />

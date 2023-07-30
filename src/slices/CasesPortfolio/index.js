@@ -20,6 +20,8 @@ const CasesPortfolioWrapper = styled.section`
     padding-top: 12rem;
     .card-porfolio--inner {
       position: relative;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
     h4 {
       font-family: var(--font-geomanist);
@@ -43,20 +45,19 @@ const CasesPortfolioWrapper = styled.section`
     .card-portfolio--actions {
       padding-top: 8rem;
       color: rgb(var(--primary-300));
-      font-family: var(--font-geomanist);
       font-size: 1.125rem;
-      font-style: normal;
       font-weight: 300;
       line-height: 1.5em;
-      max-width: 240px;
+      max-width: 190px;
       p {
         margin-bottom: 3rem;
+        color: inherit;
       }
     }
     .img-category {
       position: absolute;
       right: 2rem;
-      bottom: -4rem;
+      bottom: -6rem;
     }
   }
   .card-porfolio--0 {
@@ -74,7 +75,7 @@ const CasesPortfolioWrapper = styled.section`
       color: rgb(var(--primary-300));
     }
   }
-  @media screen and (min-width: 999px) {
+  @media screen and (min-width: 1121px) {
     .card-porfolio {
       flex: 0 0 50%;
     }
@@ -82,8 +83,22 @@ const CasesPortfolioWrapper = styled.section`
       padding-left: calc((100vw - var(--max-width)) / 2 + 1rem);
     }
     .card-porfolio--1 {
-      padding-left: 4rem;
+      padding-left: 2rem;
       padding-right: calc((100vw - var(--max-width)) / 2 + 1rem);
+    }
+  }
+  @media screen and (max-width: 1120px) {
+    flex-direction: column;
+    .card-porfolio {
+      flex: 0 0 100%;
+      .card-portfolio--actions {
+        padding-top: 2rem;
+      }
+    }
+  }
+  @media screen and (max-width: 520px) {
+    .card-porfolio .img-category {
+      max-width: 46%;
     }
   }
 `;

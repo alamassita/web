@@ -58,9 +58,28 @@ const IntroHomeWrapper = styled.div`
   .intro-content--inner {
     max-width: 620px;
   }
+  .intro-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
   @media screen and (min-width: 1420px) {
     .intro-content {
       padding-right: calc((100vw - var(--max-width)) / 2 + 1rem);
+    }
+  }
+  @media screen and (max-width: 1001px) {
+    .intro-inner {
+      flex-direction: column;
+    }
+    .intro-content {
+      width: 100%;
+      justify-content: flex-start;
+    }
+    .intro-image {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2rem;
+      width: 60%;
     }
   }
 `;

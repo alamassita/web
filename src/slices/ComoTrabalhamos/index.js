@@ -64,17 +64,34 @@ const ComoTrabalhamosWrapper = styled.section`
       position: relative;
       &:after {
         top: 50%;
-        right: 5%;
+        right: 0;
         position: absolute;
         z-index: -1;
         content: "";
-        width: 1102px;
-        height: 278px;
+        width: 628px;
+        height: 999px;
+        margin-right: -315px;
         background-image: url(${HeartElement.src});
         background-position: center center;
         background-size: cover;
-        transform: rotate(55deg) translate3d(-8%, -52%, 0);
+        transform: translate3d(-50%, -50%, 0);
       }
+    }
+  }
+  @media screen and (max-width: 975px) {
+    &.umaColuna .page-wrapper:after {
+      margin-right: -405px;
+    }
+  }
+  @media screen and (max-width: 660px) {
+    .como-trabalhamos--wrapper {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 4rem;
+    }
+    &.umaColuna .page-wrapper:after {
+      content: none;
+    }
   }
 `;
 

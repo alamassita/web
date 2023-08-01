@@ -21,6 +21,11 @@ const IntroWrapper = styled.section`
       transition: 500ms transform cubic-bezier(0.68, -0.6, 0.32, 1.6);
     }
   }
+  @media screen and (max-width: 880px) {
+    .intro-como-comprar--inner {
+      margin-top: -6rem;
+    }
+  }
 `;
 const IntroComoComprar = ({ slice }) => {
   const imageWrapperRef = useRef(null);

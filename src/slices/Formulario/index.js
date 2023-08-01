@@ -55,6 +55,7 @@ const FormularioWrapper = styled.section`
       font-style: normal;
       font-weight: 400;
       line-height: 1.5em;
+      max-width: 530px;
     }
     input[type="text"],
     input[type="email"],
@@ -111,6 +112,11 @@ const Formulario = ({ slice }) => {
       className={slice.variation}
     >
       <div className="page-wrapper">
+        {slice.variation === "orcamento" ? (
+          <>
+            <PrismicRichText field={slice.primary.titulo} />
+          </>
+        ) : null}
         <div className="form--inner">
           <div className="form--content">
             {slice.variation === "default" ? (
@@ -120,7 +126,6 @@ const Formulario = ({ slice }) => {
               </>
             ) : (
               <>
-                <PrismicRichText field={slice.primary.titulo} />
                 <PrismicRichText field={slice.primary.subtitulo} />
               </>
             )}

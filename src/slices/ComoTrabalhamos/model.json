@@ -1,8 +1,8 @@
 {
-  "id": "hero",
+  "id": "como_trabalhamos",
   "type": "SharedSlice",
-  "name": "Hero",
-  "description": "Hero",
+  "name": "ComoTrabalhamos",
+  "description": "ComoTrabalhamos",
   "variations": [
     {
       "id": "default",
@@ -12,10 +12,14 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "numero_da_secao": {
+          "type": "Number",
+          "config": { "label": "Número da seção", "placeholder": "" }
+        },
         "titulo": {
           "type": "StructuredText",
           "config": {
-            "label": "Titulo",
+            "label": "Título",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -24,7 +28,16 @@
         "subtitulo": {
           "type": "StructuredText",
           "config": {
-            "label": "Subtitulo",
+            "label": "Subtítulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "conteudo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Conteúdo",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -36,32 +49,27 @@
             "label": "Imagem destacada",
             "constraint": {},
             "thumbnails": []
-          }
-        },
-        "conteudo": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Conteúdo",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },
       "items": {}
     },
     {
-      "id": "home",
-      "name": "Home",
+      "id": "umaColuna",
+      "name": "UmaColuna",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "numero_da_secao": {
+          "type": "Number",
+          "config": { "label": "Número da seção", "placeholder": "" }
+        },
         "titulo": {
           "type": "StructuredText",
           "config": {
-            "label": "Titulo",
+            "label": "Título",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -70,7 +78,16 @@
         "subtitulo": {
           "type": "StructuredText",
           "config": {
-            "label": "Subtitulo",
+            "label": "Subtítulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "conteudo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Conteúdo",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -82,32 +99,27 @@
             "label": "Imagem destacada",
             "constraint": {},
             "thumbnails": []
-          }
-        },
-        "conteudo": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Conteúdo",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },
       "items": {}
     },
     {
-      "id": "comoComprar",
-      "name": "Como Comprar",
+      "id": "duasColunas",
+      "name": "DuasColunas",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "numero_da_secao": {
+          "type": "Number",
+          "config": { "label": "Número da seção", "placeholder": "" }
+        },
         "titulo": {
           "type": "StructuredText",
           "config": {
-            "label": "Titulo",
+            "label": "Título",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -116,7 +128,16 @@
         "subtitulo": {
           "type": "StructuredText",
           "config": {
-            "label": "Subtitulo",
+            "label": "Subtítulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "conteudo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Conteúdo",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -128,15 +149,6 @@
             "label": "Imagem destacada",
             "constraint": {},
             "thumbnails": []
-          }
-        },
-        "conteudo": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Conteúdo",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },

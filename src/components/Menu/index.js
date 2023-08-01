@@ -280,7 +280,12 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
           )}
 
           <li>
-            <Link className="nav-link" href="/como-comprar">
+            <Link
+              className={`nav-link ${
+                pageType === "como_comprar" ? "active" : ""
+              }`}
+              href="/como-comprar"
+            >
               Como comprar
             </Link>
           </li>

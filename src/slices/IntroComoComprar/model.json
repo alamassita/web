@@ -1,0 +1,27 @@
+{
+  "id": "intro_como_comprar",
+  "type": "SharedSlice",
+  "name": "IntroComoComprar",
+  "description": "IntroComoComprar",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "imagem_destacada": {
+          "type": "Image",
+          "config": {
+            "label": "Imagem destacada",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

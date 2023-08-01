@@ -129,5 +129,71 @@
 				"value": []
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "comoComprar",
+		"primary": {
+			"titulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Id ut veniam veniam sit velit labore irure. Irure occaecat reprehenderit reprehenderit sint dolor nulla."
+						}
+					}
+				]
+			},
+			"subtitulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Velit amet dolore id nostrud. Qui minim dolore reprehenderit proident. Irure elit dolor elit incididunt consectetur cupidatat proident culpa sint nulla deserunt."
+						}
+					}
+				]
+			},
+			"imagem_destacada": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f",
+					"width": 6597,
+					"height": 4398
+				},
+				"url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f",
+				"width": 6597,
+				"height": 4398,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"thumbnails": {}
+			},
+			"conteudo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla pariatur amet consectetur voluptate esse nulla. Laborum mollit minim esse qui veniam quis officia non qui veniam ad."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

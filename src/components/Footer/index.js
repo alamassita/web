@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import styled from "styled-components";
 
@@ -10,11 +11,12 @@ import SocialMediaMenu from "../SocialMediaMenu";
 
 import footerDividerImage from "../../../public/images/divider-footer.png";
 import footerBackgroundImage from "../../../public/images/plant-shadow--footer.png";
+import StampApproval from "../../../public/images/selo-lapis-de-noiva.png";
 
 const FooterWrapper = styled.footer`
   background-color: rgb(var(--nudge));
   background-image: url(${footerBackgroundImage.src});
-  background-position: top right;
+  background-position: bottom right;
   background-repeat: no-repeat;
   padding: 6rem 0;
   .page-wrapper {
@@ -33,6 +35,7 @@ const FooterWrapper = styled.footer`
   }
   .logo-footer {
     padding: 2rem 0;
+    margin-top: 3rem;
   }
   .copyright {
     .copyright--inner {
@@ -65,6 +68,25 @@ const FooterWrapper = styled.footer`
       text-align: center;
     }
   }
+  .stampApproval {
+    display: flex;
+    align-items: center;
+    grid-gap: 8px;
+    max-width: 302px;
+    justify-content: center;
+    margin: auto;
+    .stampApproval-text {
+      font-family: var(--font-geomanist);
+      font-size: 0.8rem;
+      font-weight: 300;
+      span {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin-top: 1rem;
+      }
+    }
+  }
 `;
 
 const Footer = () => {
@@ -72,6 +94,23 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <div className="page-wrapper">
+        <div className="stampApproval">
+          <div className="stampApproval-text">
+            Selecionado e aprovado por Lápis de Noiva
+            <span>#GenteQueAmaOQueFaz</span>
+          </div>
+          <div className="stampApproval-image">
+            <Link href="https://lapisdenoiva.com/fornecedores/a-la-massita/">
+              <Image
+                src={StampApproval.src}
+                alt="Selecionado e aprovado por Lápis de Noiva"
+                width={140}
+                height={140}
+                quality="100"
+              />
+            </Link>
+          </div>
+        </div>
         <div className="menu-footer">
           <Menu menuPosition="footer" />
         </div>

@@ -226,6 +226,15 @@ const DefaultSection = styled.div`
   .swiper-pagination {
     position: relative;
   }
+  @media screen and (max-width: 767px) {
+    .starts img {
+      display: none;
+      visibility: hidden;
+    }
+    .icon-star svg {
+      width: 16px;
+    }
+  }
 `;
 
 const Depoimentos = ({ slice }) => {
@@ -283,7 +292,7 @@ const Depoimentos = ({ slice }) => {
                 }}
                 modules={[Pagination, Autoplay]}
                 breakpoints={{
-                  640: {
+                  1: {
                     slidesPerView: 1,
                     spaceBetween: 20,
                   },

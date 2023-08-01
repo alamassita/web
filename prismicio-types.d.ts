@@ -80,6 +80,78 @@ export type CategoryDocument<Lang extends string = string> =
     Lang
   >;
 
+type ComoComprarDocumentDataSlicesSlice =
+  | HeroSlice
+  | DepoimentosSlice
+  | CasesPortfolioSlice
+  | FormularioSlice
+  | IntroComoComprarSlice
+  | ComoTrabalhamosSlice;
+
+/**
+ * Content for Como comprar documents
+ */
+interface ComoComprarDocumentData {
+  /**
+   * Slice Zone field in *Como comprar*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_comprar.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ComoComprarDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Como comprar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: como_comprar.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Como comprar*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_comprar.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Como comprar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: como_comprar.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Como comprar document from Prismic
+ *
+ * - **API ID**: `como_comprar`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ComoComprarDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ComoComprarDocumentData>,
+    "como_comprar",
+    Lang
+  >;
+
 type ContatoDocumentDataSlicesSlice = CasesPortfolioSlice | DepoimentosSlice;
 
 /**
@@ -351,6 +423,7 @@ export type PortfolioDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | CategoryDocument
+  | ComoComprarDocument
   | ContatoDocument
   | DepoimentoDocument
   | HomepageDocument
@@ -399,6 +472,230 @@ type CasesPortfolioSliceVariation = CasesPortfolioSliceDefault;
 export type CasesPortfolioSlice = prismic.SharedSlice<
   "cases_portfolio",
   CasesPortfolioSliceVariation
+>;
+
+/**
+ * Primary content in *ComoTrabalhamos → Primary*
+ */
+export interface ComoTrabalhamosSliceDefaultPrimary {
+  /**
+   * Número da seção field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.numero_da_secao
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  numero_da_secao: prismic.NumberField;
+
+  /**
+   * Título field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtítulo field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Imagem destacada field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.imagem_destacada
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ComoTrabalhamos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ComoTrabalhamosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ComoTrabalhamosSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ComoTrabalhamos → Primary*
+ */
+export interface ComoTrabalhamosSliceUmaColunaPrimary {
+  /**
+   * Número da seção field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.numero_da_secao
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  numero_da_secao: prismic.NumberField;
+
+  /**
+   * Título field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtítulo field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Imagem destacada field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.imagem_destacada
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+}
+
+/**
+ * UmaColuna variation for ComoTrabalhamos Slice
+ *
+ * - **API ID**: `umaColuna`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ComoTrabalhamosSliceUmaColuna = prismic.SharedSliceVariation<
+  "umaColuna",
+  Simplify<ComoTrabalhamosSliceUmaColunaPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ComoTrabalhamos → Primary*
+ */
+export interface ComoTrabalhamosSliceDuasColunasPrimary {
+  /**
+   * Número da seção field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.numero_da_secao
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  numero_da_secao: prismic.NumberField;
+
+  /**
+   * Título field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtítulo field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Imagem destacada field in *ComoTrabalhamos → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: como_trabalhamos.primary.imagem_destacada
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+}
+
+/**
+ * DuasColunas variation for ComoTrabalhamos Slice
+ *
+ * - **API ID**: `duasColunas`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ComoTrabalhamosSliceDuasColunas = prismic.SharedSliceVariation<
+  "duasColunas",
+  Simplify<ComoTrabalhamosSliceDuasColunasPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ComoTrabalhamos*
+ */
+type ComoTrabalhamosSliceVariation =
+  | ComoTrabalhamosSliceDefault
+  | ComoTrabalhamosSliceUmaColuna
+  | ComoTrabalhamosSliceDuasColunas;
+
+/**
+ * ComoTrabalhamos Shared Slice
+ *
+ * - **API ID**: `como_trabalhamos`
+ * - **Description**: ComoTrabalhamos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ComoTrabalhamosSlice = prismic.SharedSlice<
+  "como_trabalhamos",
+  ComoTrabalhamosSliceVariation
 >;
 
 /**
@@ -570,9 +867,59 @@ export type FormularioSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Formulario → Primary*
+ */
+export interface FormularioSliceOrcamentoPrimary {
+  /**
+   * Titulo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtitulo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteudo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+}
+
+/**
+ * Orçamento variation for Formulario Slice
+ *
+ * - **API ID**: `orcamento`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FormularioSliceOrcamento = prismic.SharedSliceVariation<
+  "orcamento",
+  Simplify<FormularioSliceOrcamentoPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Formulario*
  */
-type FormularioSliceVariation = FormularioSliceDefault;
+type FormularioSliceVariation =
+  | FormularioSliceDefault
+  | FormularioSliceOrcamento;
 
 /**
  * Formulario Shared Slice
@@ -703,9 +1050,70 @@ export type HeroSliceHome = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Hero → Primary*
+ */
+export interface HeroSliceComoComprarPrimary {
+  /**
+   * Titulo field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtitulo field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Imagem destacada field in *Hero → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.imagem_destacada
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+
+  /**
+   * Conteúdo field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+}
+
+/**
+ * Como Comprar variation for Hero Slice
+ *
+ * - **API ID**: `comoComprar`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSliceComoComprar = prismic.SharedSliceVariation<
+  "comoComprar",
+  Simplify<HeroSliceComoComprarPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Hero*
  */
-type HeroSliceVariation = HeroSliceDefault | HeroSliceHome;
+type HeroSliceVariation =
+  | HeroSliceDefault
+  | HeroSliceHome
+  | HeroSliceComoComprar;
 
 /**
  * Hero Shared Slice
@@ -715,6 +1123,51 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceHome;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+
+/**
+ * Primary content in *IntroComoComprar → Primary*
+ */
+export interface IntroComoComprarSliceDefaultPrimary {
+  /**
+   * Imagem destacada field in *IntroComoComprar → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: intro_como_comprar.primary.imagem_destacada
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for IntroComoComprar Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IntroComoComprarSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<IntroComoComprarSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *IntroComoComprar*
+ */
+type IntroComoComprarSliceVariation = IntroComoComprarSliceDefault;
+
+/**
+ * IntroComoComprar Shared Slice
+ *
+ * - **API ID**: `intro_como_comprar`
+ * - **Description**: IntroComoComprar
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IntroComoComprarSlice = prismic.SharedSlice<
+  "intro_como_comprar",
+  IntroComoComprarSliceVariation
+>;
 
 /**
  * Primary content in *IntroHome → Primary*
@@ -963,6 +1416,8 @@ declare module "@prismicio/client" {
     export type {
       CategoryDocument,
       CategoryDocumentData,
+      ComoComprarDocument,
+      ComoComprarDocumentData,
       ContatoDocument,
       ContatoDocumentData,
       DepoimentoDocument,
@@ -975,6 +1430,11 @@ declare module "@prismicio/client" {
       CasesPortfolioSlice,
       CasesPortfolioSliceVariation,
       CasesPortfolioSliceDefault,
+      ComoTrabalhamosSlice,
+      ComoTrabalhamosSliceVariation,
+      ComoTrabalhamosSliceDefault,
+      ComoTrabalhamosSliceUmaColuna,
+      ComoTrabalhamosSliceDuasColunas,
       DepoimentosSlice,
       DepoimentosSliceVariation,
       DepoimentosSliceDefault,
@@ -982,10 +1442,15 @@ declare module "@prismicio/client" {
       FormularioSlice,
       FormularioSliceVariation,
       FormularioSliceDefault,
+      FormularioSliceOrcamento,
       HeroSlice,
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceHome,
+      HeroSliceComoComprar,
+      IntroComoComprarSlice,
+      IntroComoComprarSliceVariation,
+      IntroComoComprarSliceDefault,
       IntroHomeSlice,
       IntroHomeSliceVariation,
       IntroHomeSliceDefault,

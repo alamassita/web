@@ -6,7 +6,7 @@ export default function Document() {
       <Head />
       <body>
         <Main />
-        <div id="backdrop" /> /
+        <div id="backdrop" />
         <NextScript />
       </body>
     </Html>

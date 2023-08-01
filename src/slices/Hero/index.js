@@ -110,21 +110,23 @@ const Hero = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       <div className="hero-wrapper">
-        {slice.variation === "home" ? (
+        {slice.variation === "home" || slice.variation === "comoComprar" ? (
           <HeroHome>
             <div className="page-wrapper">
               <div className="hero--inner">
-                <motion.div
-                  className="stamp"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{
-                    ease: "linear",
-                    duration: 10,
-                    repeat: Infinity,
-                  }}
-                >
-                  <StampAmorCuidado />
-                </motion.div>
+                {slice.variation === "home" ? (
+                  <motion.div
+                    className="stamp"
+                    animate={{ rotate: [0, 360] }}
+                    transition={{
+                      ease: "linear",
+                      duration: 10,
+                      repeat: Infinity,
+                    }}
+                  >
+                    <StampAmorCuidado />
+                  </motion.div>
+                ) : null}
                 <div className="hero--content">
                   {slice.primary.subtitulo ? (
                     <PrismicRichText field={slice.primary.subtitulo} />

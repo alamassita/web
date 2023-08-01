@@ -9,7 +9,7 @@ import sm from "../sm.json";
 
 import { HeroContato } from "../components/Hero";
 
-export default function Contato({ page }) {
+export default function ComoComprar({ page }) {
   return (
     <>
       <Head>
@@ -18,11 +18,6 @@ export default function Contato({ page }) {
           <meta name="description" content={page.data?.meta_description} />
         ) : null}
       </Head>
-      <HeroContato
-        title={page.data?.titulo}
-        subtitle={page.data?.subtitulo}
-        content={page.data?.conteudo}
-      />
       <SliceZone slices={page.data?.slices} components={components} />
     </>
   );
@@ -33,7 +28,7 @@ export async function getStaticProps() {
   // drafts from the Page Builder.
   const client = prismic.createClient(sm.apiEndpoint);
 
-  const page = await client.getByUID("contato", "contato", {
+  const page = await client.getByUID("como_comprar", "como-comprar", {
     fetchLinks: [
       "category.uid",
       "category.titulo",

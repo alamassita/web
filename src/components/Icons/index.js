@@ -1,4 +1,5 @@
 import IconChevronDown from "./IconChevronDown";
+import IconComoComprar from "./IconComoComprar";
 import IconFacebook from "./IconFacebook";
 import IconInstagram from "./IconInstagram";
 import IconMailCheck from "./IconMailCheck";
@@ -8,6 +9,7 @@ import IconStar from "./IconStar";
 
 export {
   IconChevronDown,
+  IconComoComprar,
   IconFacebook,
   IconInstagram,
   IconMailCheck,

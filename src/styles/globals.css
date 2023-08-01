@@ -107,6 +107,25 @@ p strong {
   font-weight: 500;
 }
 
+.rotateComoComprar {
+  --rotateWidth: 1020px;
+  width: var(--rotateWidth);
+  position: fixed;
+  z-index: -1;
+  left: 50%;
+  margin-left: calc((var(--rotateWidth)/2) - var(--rotateWidth));
+  transform-origin: center;
+}
+.rotateComoComprar svg {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1320px) {
+  .rotateComoComprar {
+    --rotateWidth: 70vw;
+  }
+}
+
 @media only screen and (max-width: 1001px) {
   html {
       font-size: 14px;

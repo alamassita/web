@@ -312,7 +312,7 @@ const Depoimentos = ({ slice }) => {
                   <SwiperSlide>
                     <div
                       className={`card-depoimento card-depoimento--${i}`}
-                      key={`cardFeatures${i}`}
+                      key={`test$imonial-${slice.variation}-${item.depoimento.id}`}
                     >
                       <CardDepoimento testimonial={item.depoimento} />
                     </div>

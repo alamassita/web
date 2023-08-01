@@ -56,6 +56,14 @@ const FormularioWrapper = styled.section`
       font-weight: 400;
       line-height: 1.5em;
     }
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="password"],
+    textarea {
+      background-color: white;
+    }
   }
   .page-wrapper {
     padding-top: 8rem;

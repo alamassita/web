@@ -4,21 +4,21 @@
  * @param {IntroComoComprarProps}
  */
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { PrismicNextImage } from "@prismicio/next";
 
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 
 import styled from "styled-components";
 
 const IntroWrapper = styled.section`
-  padding-bottom: 8rem;
+  padding-bottom: 4rem;
   .intro-como-comprar--inner {
     margin-top: -16rem;
     img {
       position: relative;
       margin: 0 auto;
-      transition: 500ms transform ease-in-out;
+      transition: 500ms transform cubic-bezier(0.68, -0.6, 0.32, 1.6);
     }
   }
 `;

@@ -10,6 +10,8 @@ import { PrismicNextImage } from "@prismicio/next";
 import { StampAmorCuidado } from "../../components/Stamps";
 import PlantShadowImage from "../../../public/images/plant-shadow--hero.png";
 
+import WaterColorBG from "../../../public/images/bg-contato.png";
+
 import { motion } from "framer-motion";
 
 import styled from "styled-components";
@@ -90,6 +92,29 @@ const HeroHome = styled.div`
     height: auto;
     width: clamp(min(20vw, 20rem), 920px, max(60vw, 40rem));
   }
+  // Quem somos
+  .hero--grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-image: url(${WaterColorBG.src});
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-blend-mode: multiply;
+  }
+  .hero--title {
+    h1 {
+      color: rgb(var(--gray-800));
+      font-size: 7rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 0.9em;
+      letter-spacing: -0.07rem;
+      strong {
+        display: block;
+        font-weight: 400;
+      }
+    }
+  }
   @media screen and (max-width: 1001px) {
     .hero--content {
       padding: 6rem 3rem;
@@ -156,6 +181,21 @@ const Hero = ({ slice }) => {
         ) : (
           ""
         )}
+        {slice.variation === "quemSomos" ? (
+          <HeroHome>
+            <div className="page-wrapper">
+              <div className="hero--grid">
+                <div className="hero--title">
+                  <PrismicRichText field={slice.primary.titulo} />
+                </div>
+                <div className="hero--video">video</div>
+                <div className="hero--main">
+                  <PrismicRichText field={slice.primary.conteudo} />
+                </div>
+              </div>
+            </div>
+          </HeroHome>
+        ) : null}
       </div>
     </HeroSection>
   );

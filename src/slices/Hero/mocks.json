@@ -157,7 +157,6 @@
 				]
 			},
 			"imagem_destacada": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f",
@@ -175,6 +174,9 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
 			"conteudo": {
@@ -187,6 +189,62 @@
 						}
 					}
 				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "quemSomos",
+		"primary": {
+			"titulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Magna fugiat fugiat sint pariatur commodo tempor amet minim ad officia eiusmod quis quis commodo exercitation. Reprehenderit sit ullamco officia nisi in dolore mollit consectetur ullamco fugiat officia quis consequat."
+						}
+					}
+				]
+			},
+			"conteudo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Tempor enim est cupidatat eiusmod consequat id deserunt ea velit duis."
+						}
+					}
+				]
+			},
+			"video_completo": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"id": "mock_Media_link",
+					"kind": "image/jpeg",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"__TYPE__": "FileLink"
+				}
+			},
+			"video_chamada": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"id": "mock_Media_link",
+					"kind": "image/jpeg",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"__TYPE__": "FileLink"
+				}
 			}
 		},
 		"items": [

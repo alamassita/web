@@ -290,7 +290,12 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="/quem-somos">
+            <Link
+              className={`nav-link ${
+                pageType === "quem_somos" ? "active" : ""
+              }`}
+              href="/quem-somos"
+            >
               Quem somos
             </Link>
           </li>

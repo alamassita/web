@@ -141,6 +141,51 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "quemSomos",
+      "name": "Quem Somos",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "conteudo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Conteúdo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "video_completo": {
+          "type": "Link",
+          "config": {
+            "label": "Video completo",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
+        "video_chamada": {
+          "type": "Link",
+          "config": {
+            "label": "Video chamada",
+            "placeholder": "",
+            "select": "media"
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

@@ -421,13 +421,84 @@ export type PortfolioDocument<Lang extends string = string> =
     Lang
   >;
 
+type QuemSomosDocumentDataSlicesSlice =
+  | DepoimentosSlice
+  | CasesPortfolioSlice
+  | FormularioSlice
+  | HeroSlice;
+
+/**
+ * Content for Quem somos documents
+ */
+interface QuemSomosDocumentData {
+  /**
+   * Slice Zone field in *Quem somos*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quem_somos.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<QuemSomosDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Quem somos*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: quem_somos.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Quem somos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quem_somos.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Quem somos*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: quem_somos.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Quem somos document from Prismic
+ *
+ * - **API ID**: `quem_somos`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type QuemSomosDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<QuemSomosDocumentData>,
+    "quem_somos",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | CategoryDocument
   | ComoComprarDocument
   | ContatoDocument
   | DepoimentoDocument
   | HomepageDocument
-  | PortfolioDocument;
+  | PortfolioDocument
+  | QuemSomosDocument;
 
 /**
  * Primary content in *CasesPortfolio → Items*
@@ -1108,12 +1179,71 @@ export type HeroSliceComoComprar = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Hero → Primary*
+ */
+export interface HeroSliceQuemSomosPrimary {
+  /**
+   * Titulo field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Video completo field in *Hero → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.video_completo
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video_completo: prismic.LinkToMediaField;
+
+  /**
+   * Video chamada field in *Hero → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.video_chamada
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video_chamada: prismic.LinkToMediaField;
+}
+
+/**
+ * Quem Somos variation for Hero Slice
+ *
+ * - **API ID**: `quemSomos`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSliceQuemSomos = prismic.SharedSliceVariation<
+  "quemSomos",
+  Simplify<HeroSliceQuemSomosPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Hero*
  */
 type HeroSliceVariation =
   | HeroSliceDefault
   | HeroSliceHome
-  | HeroSliceComoComprar;
+  | HeroSliceComoComprar
+  | HeroSliceQuemSomos;
 
 /**
  * Hero Shared Slice
@@ -1426,6 +1556,8 @@ declare module "@prismicio/client" {
       HomepageDocumentData,
       PortfolioDocument,
       PortfolioDocumentData,
+      QuemSomosDocument,
+      QuemSomosDocumentData,
       AllDocumentTypes,
       CasesPortfolioSlice,
       CasesPortfolioSliceVariation,
@@ -1448,6 +1580,7 @@ declare module "@prismicio/client" {
       HeroSliceDefault,
       HeroSliceHome,
       HeroSliceComoComprar,
+      HeroSliceQuemSomos,
       IntroComoComprarSlice,
       IntroComoComprarSliceVariation,
       IntroComoComprarSliceDefault,

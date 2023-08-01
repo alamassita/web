@@ -15,7 +15,7 @@ const FormularioWrapper = styled.section`
     .page-wrapper {
       background-image: url(${ContatoBG.src});
       background-repeat: no-repeat;
-      background-positon: left top;
+      background-position: left top;
     }
     h4 {
       color: rgb(var(--pink-300));

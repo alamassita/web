@@ -84,7 +84,7 @@ const Card = styled.div`
 `;
 
 const CardDepoimento = ({ testimonial }) => {
-  console.log(testimonial);
+  // console.log(testimonial);
   return (
     <Card>
       <div className="card-header">

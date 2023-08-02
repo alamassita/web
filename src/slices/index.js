@@ -10,6 +10,9 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   intro_como_comprar: dynamic(() => import("./IntroComoComprar")),
   intro_home: dynamic(() => import("./IntroHome")),
+  intro_quem_somos: dynamic(() => import("./IntroQuemSomos")),
+  our_motto: dynamic(() => import("./OurMotto")),
+  quem_somos_image: dynamic(() => import("./QuemSomosImage")),
   quem_sou_eu: dynamic(() => import("./QuemSouEu")),
   whats_app: dynamic(() => import("./WhatsApp")),
 };

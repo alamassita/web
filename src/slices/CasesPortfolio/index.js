@@ -104,7 +104,7 @@ const CasesPortfolioWrapper = styled.section`
 `;
 
 const CasesPortfolio = ({ slice }) => {
-  console.log(slice);
+  // console.log(slice);
   return (
     <CasesPortfolioWrapper
       data-slice-type={slice.slice_type}

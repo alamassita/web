@@ -425,7 +425,10 @@ type QuemSomosDocumentDataSlicesSlice =
   | DepoimentosSlice
   | CasesPortfolioSlice
   | FormularioSlice
-  | HeroSlice;
+  | HeroSlice
+  | IntroQuemSomosSlice
+  | OurMottoSlice
+  | QuemSomosImageSlice;
 
 /**
  * Content for Quem somos documents
@@ -1375,6 +1378,201 @@ export type IntroHomeSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *IntroQuemSomos → Primary*
+ */
+export interface IntroQuemSomosSliceDefaultPrimary {
+  /**
+   * Título field in *IntroQuemSomos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: intro_quem_somos.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtítulo field in *IntroQuemSomos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: intro_quem_somos.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *IntroQuemSomos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: intro_quem_somos.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Citação field in *IntroQuemSomos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: intro_quem_somos.primary.citacao
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  citacao: prismic.RichTextField;
+}
+
+/**
+ * Default variation for IntroQuemSomos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IntroQuemSomosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<IntroQuemSomosSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *IntroQuemSomos*
+ */
+type IntroQuemSomosSliceVariation = IntroQuemSomosSliceDefault;
+
+/**
+ * IntroQuemSomos Shared Slice
+ *
+ * - **API ID**: `intro_quem_somos`
+ * - **Description**: IntroQuemSomos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IntroQuemSomosSlice = prismic.SharedSlice<
+  "intro_quem_somos",
+  IntroQuemSomosSliceVariation
+>;
+
+/**
+ * Primary content in *OurMotto → Primary*
+ */
+export interface OurMottoSliceDefaultPrimary {
+  /**
+   * Vídeo field in *OurMotto → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_motto.primary.video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkToMediaField;
+
+  /**
+   * Citação field in *OurMotto → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_motto.primary.citacao
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  citacao: prismic.RichTextField;
+
+  /**
+   * Autor field in *OurMotto → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_motto.primary.autor
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  autor: prismic.RichTextField;
+}
+
+/**
+ * Default variation for OurMotto Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurMottoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurMottoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OurMotto*
+ */
+type OurMottoSliceVariation = OurMottoSliceDefault;
+
+/**
+ * OurMotto Shared Slice
+ *
+ * - **API ID**: `our_motto`
+ * - **Description**: OurMotto
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurMottoSlice = prismic.SharedSlice<
+  "our_motto",
+  OurMottoSliceVariation
+>;
+
+/**
+ * Primary content in *QuemSomosImage → Primary*
+ */
+export interface QuemSomosImageSliceDefaultPrimary {
+  /**
+   * Imagem destacada field in *QuemSomosImage → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quem_somos_image.primary.imagem_destacada
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+
+  /**
+   * Conteúdo field in *QuemSomosImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quem_somos_image.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+}
+
+/**
+ * Default variation for QuemSomosImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QuemSomosImageSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<QuemSomosImageSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *QuemSomosImage*
+ */
+type QuemSomosImageSliceVariation = QuemSomosImageSliceDefault;
+
+/**
+ * QuemSomosImage Shared Slice
+ *
+ * - **API ID**: `quem_somos_image`
+ * - **Description**: QuemSomosImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QuemSomosImageSlice = prismic.SharedSlice<
+  "quem_somos_image",
+  QuemSomosImageSliceVariation
+>;
+
+/**
  * Primary content in *QuemSouEu → Primary*
  */
 export interface QuemSouEuSliceDefaultPrimary {
@@ -1587,6 +1785,15 @@ declare module "@prismicio/client" {
       IntroHomeSlice,
       IntroHomeSliceVariation,
       IntroHomeSliceDefault,
+      IntroQuemSomosSlice,
+      IntroQuemSomosSliceVariation,
+      IntroQuemSomosSliceDefault,
+      OurMottoSlice,
+      OurMottoSliceVariation,
+      OurMottoSliceDefault,
+      QuemSomosImageSlice,
+      QuemSomosImageSliceVariation,
+      QuemSomosImageSliceDefault,
       QuemSouEuSlice,
       QuemSouEuSliceVariation,
       QuemSouEuSliceDefault,

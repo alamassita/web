@@ -15,7 +15,10 @@
             "depoimentos": { "type": "SharedSlice" },
             "cases_portfolio": { "type": "SharedSlice" },
             "formulario": { "type": "SharedSlice" },
-            "hero": { "type": "SharedSlice" }
+            "hero": { "type": "SharedSlice" },
+            "intro_quem_somos": { "type": "SharedSlice" },
+            "our_motto": { "type": "SharedSlice" },
+            "quem_somos_image": { "type": "SharedSlice" }
           }
         }
       }

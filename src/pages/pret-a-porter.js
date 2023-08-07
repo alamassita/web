@@ -7,22 +7,9 @@ import { components } from "@/slices";
 import { createClient } from "@/prismicio";
 import sm from "../sm.json";
 
-import { IconComoComprar } from "../components/Icons";
+import { HeroContato } from "../components/Hero";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-
-export default function ComoComprar({ page }) {
-  console.log(page);
-  const { scrollY } = useScroll();
-  const rotate = useSpring(
-    useTransform(scrollY, [0, 2800], [0, 360], { clamp: false }),
-    {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001,
-    }
-  );
-
+export default function PretAPorter({ page }) {
   return (
     <>
       <Head>
@@ -31,14 +18,12 @@ export default function ComoComprar({ page }) {
           <meta name="description" content={page.data?.meta_description} />
         ) : null}
       </Head>
-      <motion.div
-        className="rotateComoComprar"
-        style={{
-          rotate: rotate,
-        }}
-      >
-        <IconComoComprar />
-      </motion.div>
+      {/* <HeroContato
+        title={page.data?.titulo}
+        subtitle={page.data?.subtitulo}
+        content={page.data?.conteudo}
+      /> */}
+      <h1>Loaded!</h1>
       <SliceZone slices={page.data?.slices} components={components} />
     </>
   );
@@ -49,7 +34,7 @@ export async function getStaticProps() {
   // drafts from the Page Builder.
   const client = prismic.createClient(sm.apiEndpoint);
 
-  const page = await client.getByUID("como_comprar", "como-comprar", {
+  const page = await client.getByUID("portfolio_categoria", "pret-a-porter", {
     fetchLinks: [
       "portfolio_categoria.uid",
       "portfolio_categoria.titulo",

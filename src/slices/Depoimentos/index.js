@@ -242,10 +242,10 @@ const Depoimentos = ({ slice }) => {
   const isInView = useInView(imageWaterColorRef);
 
   useEffect(() => {
-    if (slice.variation === "callToAction") {
-      imageWaterColorRef.current.classList.toggle("is-active");
+    if (slice?.variation === "callToAction") {
+      imageWaterColorRef?.current.classList.toggle("is-active");
     }
-  }, [isInView]);
+  }, [slice, isInView]);
 
   return (
     <section
@@ -280,45 +280,48 @@ const Depoimentos = ({ slice }) => {
           </div>
           <div className="testimonials-bottom">
             <div className="page-wrapper">
-              <Swiper
-                spaceBetween={50}
-                slidesPerView={3}
-                autoplay={{
-                  delay: 5000,
-                  disableOnInteraction: false,
-                }}
-                pagination={{
-                  clickable: true,
-                }}
-                modules={[Pagination, Autoplay]}
-                breakpoints={{
-                  1: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                  },
-                  768: {
-                    slidesPerView: 2,
-                    spaceBetween: 40,
-                  },
-                  1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 50,
-                  },
-                }}
-                onSlideChange={() => console.log("slide change")}
-                onSwiper={(swiper) => console.log(swiper)}
-              >
-                {slice?.items?.map((item, i) => (
-                  <SwiperSlide>
-                    <div
-                      className={`card-depoimento card-depoimento--${i}`}
+              {slice?.items && (
+                <Swiper
+                  spaceBetween={50}
+                  slidesPerView={3}
+                  autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                  }}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  modules={[Pagination, Autoplay]}
+                  breakpoints={{
+                    1: {
+                      slidesPerView: 1,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 40,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 50,
+                    },
+                  }}
+                  onSlideChange={() => console.log("slide change")}
+                  onSwiper={(swiper) => console.log(swiper)}
+                >
+                  {slice?.items?.map((item, i) => (
+                    <SwiperSlide
                       key={`test$imonial-${slice.variation}-${item.depoimento.id}`}
                     >
-                      <CardDepoimento testimonial={item.depoimento} />
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                      <div
+                        className={`card-depoimento card-depoimento--${i} id-${item.depoimento.id}`}
+                      >
+                        <CardDepoimento testimonial={item.depoimento} />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              )}
             </div>
           </div>
         </DefaultSection>

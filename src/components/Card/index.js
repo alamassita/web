@@ -1,3 +1,4 @@
 import CardDepoimento from "./CardDepoimento";
+import CardPortfolio from "./CardPortfolio";
 
-export { CardDepoimento };
+export { CardDepoimento, CardPortfolio };

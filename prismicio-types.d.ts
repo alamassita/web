@@ -389,12 +389,31 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
+type PortfolioDocumentDataSlicesSlice =
+  | DepoimentosSlice
+  | FormularioSlice
+  | HeroSlice
+  | DetalhesProdutoSlice
+  | OQueEstaInclusoSlice
+  | ListaTodosTrabalhosSlice;
+
 /**
- * Content for Portfolio documents
+ * Content for Portfólio documents
  */
 interface PortfolioDocumentData {
   /**
-   * Categoria field in *Portfolio*
+   * Título field in *Portfólio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.titulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Categoria field in *Portfólio*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
@@ -402,11 +421,76 @@ interface PortfolioDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  categoria: prismic.ContentRelationshipField;
+  categoria: prismic.ContentRelationshipField<"portfolio_categoria">;
+
+  /**
+   * Imagem destacada field in *Portfólio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.imagem_destacada
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+
+  /**
+   * Conteúdo field in *Portfólio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.conteudo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Portfólio*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PortfolioDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Portfólio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: portfolio.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Portfólio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Portfólio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: portfolio.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
 }
 
 /**
- * Portfolio document from Prismic
+ * Portfólio document from Prismic
  *
  * - **API ID**: `portfolio`
  * - **Repeatable**: `true`
@@ -418,6 +502,116 @@ export type PortfolioDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<
     Simplify<PortfolioDocumentData>,
     "portfolio",
+    Lang
+  >;
+
+type PortfolioCategoriaDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Portfólio Categoria documents
+ */
+interface PortfolioCategoriaDocumentData {
+  /**
+   * Título field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_categoria.titulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtítulo field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_categoria.subtitulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitulo: prismic.KeyTextField;
+
+  /**
+   * Conteúdo field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_categoria.conteudo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Imagem destacada field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_categoria.imagem_destacada
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_categoria.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PortfolioCategoriaDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: portfolio_categoria.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_categoria.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: portfolio_categoria.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Portfólio Categoria document from Prismic
+ *
+ * - **API ID**: `portfolio_categoria`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PortfolioCategoriaDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<PortfolioCategoriaDocumentData>,
+    "portfolio_categoria",
     Lang
   >;
 
@@ -501,6 +695,7 @@ export type AllDocumentTypes =
   | DepoimentoDocument
   | HomepageDocument
   | PortfolioDocument
+  | PortfolioCategoriaDocument
   | QuemSomosDocument;
 
 /**
@@ -890,6 +1085,81 @@ type DepoimentosSliceVariation =
 export type DepoimentosSlice = prismic.SharedSlice<
   "depoimentos",
   DepoimentosSliceVariation
+>;
+
+/**
+ * Primary content in *DetalhesProduto → Primary*
+ */
+export interface DetalhesProdutoSliceDefaultPrimary {
+  /**
+   * Imagem destacada field in *DetalhesProduto → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: detalhes_produto.primary.imagem_destacada
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+
+  /**
+   * Envelope field in *DetalhesProduto → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: detalhes_produto.primary.envelope
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  envelope: prismic.RichTextField;
+
+  /**
+   * Papel field in *DetalhesProduto → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: detalhes_produto.primary.papel
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  papel: prismic.RichTextField;
+
+  /**
+   * Fecho field in *DetalhesProduto → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: detalhes_produto.primary.fecho
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  fecho: prismic.RichTextField;
+}
+
+/**
+ * Default variation for DetalhesProduto Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DetalhesProdutoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<DetalhesProdutoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *DetalhesProduto*
+ */
+type DetalhesProdutoSliceVariation = DetalhesProdutoSliceDefault;
+
+/**
+ * DetalhesProduto Shared Slice
+ *
+ * - **API ID**: `detalhes_produto`
+ * - **Description**: DetalhesProduto
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DetalhesProdutoSlice = prismic.SharedSlice<
+  "detalhes_produto",
+  DetalhesProdutoSliceVariation
 >;
 
 /**
@@ -1453,6 +1723,81 @@ export type IntroQuemSomosSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ListaTodosTrabalhos → Primary*
+ */
+export interface ListaTodosTrabalhosSliceDefaultPrimary {
+  /**
+   * Portfólio categoria field in *ListaTodosTrabalhos → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lista_todos_trabalhos.primary.portfolio_categoria
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  portfolio_categoria: prismic.ContentRelationshipField;
+}
+
+/**
+ * Default variation for ListaTodosTrabalhos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ListaTodosTrabalhosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ListaTodosTrabalhosSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ListaTodosTrabalhos*
+ */
+type ListaTodosTrabalhosSliceVariation = ListaTodosTrabalhosSliceDefault;
+
+/**
+ * ListaTodosTrabalhos Shared Slice
+ *
+ * - **API ID**: `lista_todos_trabalhos`
+ * - **Description**: ListaTodosTrabalhos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ListaTodosTrabalhosSlice = prismic.SharedSlice<
+  "lista_todos_trabalhos",
+  ListaTodosTrabalhosSliceVariation
+>;
+
+/**
+ * Default variation for OQueEstaIncluso Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OQueEstaInclusoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *OQueEstaIncluso*
+ */
+type OQueEstaInclusoSliceVariation = OQueEstaInclusoSliceDefault;
+
+/**
+ * OQueEstaIncluso Shared Slice
+ *
+ * - **API ID**: `o_que_esta_incluso`
+ * - **Description**: OQueEstaIncluso
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OQueEstaInclusoSlice = prismic.SharedSlice<
+  "o_que_esta_incluso",
+  OQueEstaInclusoSliceVariation
+>;
+
+/**
  * Primary content in *OurMotto → Primary*
  */
 export interface OurMottoSliceDefaultPrimary {
@@ -1754,6 +2099,8 @@ declare module "@prismicio/client" {
       HomepageDocumentData,
       PortfolioDocument,
       PortfolioDocumentData,
+      PortfolioCategoriaDocument,
+      PortfolioCategoriaDocumentData,
       QuemSomosDocument,
       QuemSomosDocumentData,
       AllDocumentTypes,
@@ -1769,6 +2116,9 @@ declare module "@prismicio/client" {
       DepoimentosSliceVariation,
       DepoimentosSliceDefault,
       DepoimentosSliceCallToAction,
+      DetalhesProdutoSlice,
+      DetalhesProdutoSliceVariation,
+      DetalhesProdutoSliceDefault,
       FormularioSlice,
       FormularioSliceVariation,
       FormularioSliceDefault,
@@ -1788,6 +2138,12 @@ declare module "@prismicio/client" {
       IntroQuemSomosSlice,
       IntroQuemSomosSliceVariation,
       IntroQuemSomosSliceDefault,
+      ListaTodosTrabalhosSlice,
+      ListaTodosTrabalhosSliceVariation,
+      ListaTodosTrabalhosSliceDefault,
+      OQueEstaInclusoSlice,
+      OQueEstaInclusoSliceVariation,
+      OQueEstaInclusoSliceDefault,
       OurMottoSlice,
       OurMottoSliceVariation,
       OurMottoSliceDefault,

@@ -28,12 +28,12 @@ export async function getStaticProps() {
 
   const page = await client.getByUID("quem_somos", "quem-somos", {
     fetchLinks: [
-      "category.uid",
-      "category.titulo",
-      "category.conteudo",
-      "category.subtitulo",
-      "category.imagem_destacada",
-      "category.url",
+      "portfolio_categoria.uid",
+      "portfolio_categoria.titulo",
+      "portfolio_categoria.conteudo",
+      "portfolio_categoria.subtitulo",
+      "portfolio_categoria.imagem_destacada",
+      "portfolio_categoria.url",
       "depoimento.nome",
       "depoimento.foto",
       "depoimento.conteudo",

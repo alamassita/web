@@ -1,0 +1,16 @@
+{
+  "id": "o_que_esta_incluso",
+  "type": "SharedSlice",
+  "name": "OQueEstaIncluso",
+  "description": "OQueEstaIncluso",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

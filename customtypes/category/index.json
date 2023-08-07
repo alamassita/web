@@ -1,7 +1,7 @@
 {
   "id": "category",
   "label": "Portfolio Category",
-  "format": "custom",
+  "format": "page",
   "repeatable": true,
   "status": true,
   "json": {

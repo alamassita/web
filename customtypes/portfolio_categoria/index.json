@@ -1,6 +1,6 @@
 {
-  "id": "portfolio",
-  "label": "Portfólio",
+  "id": "portfolio_categoria",
+  "label": "Portfólio Categoria",
   "format": "page",
   "repeatable": true,
   "status": true,
@@ -16,12 +16,17 @@
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "categoria": {
-        "type": "Link",
+      "subtitulo": {
+        "type": "Text",
+        "config": { "label": "Subtítulo", "placeholder": "" }
+      },
+      "conteudo": {
+        "type": "StructuredText",
         "config": {
-          "label": "Categoria",
-          "select": "document",
-          "customtypes": ["portfolio_categoria"]
+          "label": "Conteúdo",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
       "imagem_destacada": {
@@ -32,28 +37,10 @@
           "thumbnails": []
         }
       },
-      "conteudo": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Conteúdo",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
-        "config": {
-          "choices": {
-            "depoimentos": { "type": "SharedSlice" },
-            "formulario": { "type": "SharedSlice" },
-            "hero": { "type": "SharedSlice" },
-            "detalhes_produto": { "type": "SharedSlice" },
-            "o_que_esta_incluso": { "type": "SharedSlice" },
-            "lista_todos_trabalhos": { "type": "SharedSlice" }
-          }
-        }
+        "config": { "choices": {} }
       }
     },
     "SEO & Metadata": {

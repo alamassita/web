@@ -1,0 +1,63 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"imagem_destacada": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+					"width": 4000,
+					"height": 6000
+				},
+				"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+				"width": 4000,
+				"height": 6000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"thumbnails": {}
+			},
+			"envelope": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Lorem culpa voluptate sunt voluptate quis."
+						}
+					}
+				]
+			},
+			"papel": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Consequat laborum occaecat in in minim tempor proident sunt qui ut culpa cillum consectetur veniam. Qui aliqua culpa ex voluptate reprehenderit est eu qui. Pariatur consequat magna ipsum nulla."
+						}
+					}
+				]
+			},
+			"fecho": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aliqua ea tempor qui non labore amet proident ipsum laborum excepteur incididunt culpa tempor ipsum labore. Lorem laborum sunt anim adipisicing cupidatat in irure labore sint."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

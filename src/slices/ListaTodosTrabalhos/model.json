@@ -1,0 +1,23 @@
+{
+  "id": "lista_todos_trabalhos",
+  "type": "SharedSlice",
+  "name": "ListaTodosTrabalhos",
+  "description": "ListaTodosTrabalhos",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "portfolio_categoria": {
+          "type": "Link",
+          "config": { "label": "Portfólio categoria", "select": "document" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

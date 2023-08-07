@@ -106,10 +106,7 @@ const CasesPortfolioWrapper = styled.section`
 const CasesPortfolio = ({ slice }) => {
   // console.log(slice);
   return (
-    <CasesPortfolioWrapper
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
+    <CasesPortfolioWrapper>
       {slice?.items?.map((item, i) => (
         <div
           className={`card-porfolio card-porfolio--${i} card-porfolio--${item.categoria.uid}`}

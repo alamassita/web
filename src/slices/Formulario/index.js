@@ -37,6 +37,30 @@ const FormularioWrapper = styled.section`
       margin: 2rem 0;
     }
   }
+  &.orcamentoProduto {
+    background-color: rgb(var(--nudge));
+    .page-wrapper {
+      background-image: url(${ContatoBG.src});
+      background-repeat: no-repeat;
+      background-position: left top;
+    }
+    h3 {
+      color: rgb(var(--gray-800));
+      font-size: 5.125rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1em;
+      letter-spacing: -0.1025rem;
+      margin: 2rem 0;
+    }
+    h4 {
+      color: rgb(var(--primary-300));
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.5em;
+    }
+  }
   &.orcamento {
     h3 {
       color: rgb(var(--gray-800));
@@ -109,10 +133,13 @@ const Formulario = ({ slice }) => {
     <FormularioWrapper
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={slice.variation}
+      className={`${slice.variation} ${
+        slice.primary.style && slice.primary.style
+      }`}
     >
       <div className="page-wrapper">
-        {slice.variation === "orcamento" ? (
+        {slice.variation === "orcamento" ||
+        slice.variation === "orcamentoProduto" ? (
           <>
             <PrismicRichText field={slice.primary.titulo} />
           </>

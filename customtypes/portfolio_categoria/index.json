@@ -37,10 +37,36 @@
           "thumbnails": []
         }
       },
+      "descricao": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Descrição",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "imagem_background": {
+        "type": "Image",
+        "config": {
+          "label": "Imagem background",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
-        "config": { "choices": {} }
+        "config": {
+          "choices": {
+            "lista_todos_trabalhos": { "type": "SharedSlice" },
+            "formulario": { "type": "SharedSlice" },
+            "o_que_esta_incluso": { "type": "SharedSlice" },
+            "depoimentos": { "type": "SharedSlice" },
+            "intro_quem_somos": { "type": "SharedSlice" },
+            "duas_colunas": { "type": "SharedSlice" }
+          }
+        }
       }
     },
     "SEO & Metadata": {

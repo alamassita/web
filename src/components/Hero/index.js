@@ -1,4 +1,5 @@
+import HeroCategory from "./HeroCategory";
 import HeroContato from "./HeroContato";
 import HeroPortfolio from "./HeroPortfolio";
 
-export { HeroContato, HeroPortfolio };
+export { HeroCategory, HeroContato, HeroPortfolio };

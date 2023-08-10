@@ -505,7 +505,13 @@ export type PortfolioDocument<Lang extends string = string> =
     Lang
   >;
 
-type PortfolioCategoriaDocumentDataSlicesSlice = never;
+type PortfolioCategoriaDocumentDataSlicesSlice =
+  | ListaTodosTrabalhosSlice
+  | FormularioSlice
+  | OQueEstaInclusoSlice
+  | DepoimentosSlice
+  | IntroQuemSomosSlice
+  | DuasColunasSlice;
 
 /**
  * Content for Portfólio Categoria documents
@@ -554,6 +560,28 @@ interface PortfolioCategoriaDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   imagem_destacada: prismic.ImageField<never>;
+
+  /**
+   * Descrição field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_categoria.descricao
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descricao: prismic.RichTextField;
+
+  /**
+   * Imagem background field in *Portfólio Categoria*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_categoria.imagem_background
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_background: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *Portfólio Categoria*
@@ -1163,6 +1191,71 @@ export type DetalhesProdutoSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *DuasColunas → Primary*
+ */
+export interface DuasColunasSliceDefaultPrimary {
+  /**
+   * Título field in *DuasColunas → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: duas_colunas.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtitulo field in *DuasColunas → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: duas_colunas.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *DuasColunas → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: duas_colunas.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+}
+
+/**
+ * Default variation for DuasColunas Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DuasColunasSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<DuasColunasSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *DuasColunas*
+ */
+type DuasColunasSliceVariation = DuasColunasSliceDefault;
+
+/**
+ * DuasColunas Shared Slice
+ *
+ * - **API ID**: `duas_colunas`
+ * - **Description**: DuasColunas
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DuasColunasSlice = prismic.SharedSlice<
+  "duas_colunas",
+  DuasColunasSliceVariation
+>;
+
+/**
  * Primary content in *Formulario → Primary*
  */
 export interface FormularioSliceDefaultPrimary {
@@ -1259,11 +1352,71 @@ export type FormularioSliceOrcamento = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Formulario → Primary*
+ */
+export interface FormularioSliceOrcamentoProdutoPrimary {
+  /**
+   * Titulo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtitulo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Conteudo field in *Formulario → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulario.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Style field in *Formulario → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: pink
+   * - **API ID Path**: formulario.primary.style
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  style: prismic.SelectField<"pink" | "black", "filled">;
+}
+
+/**
+ * Orçamento - Produto variation for Formulario Slice
+ *
+ * - **API ID**: `orcamentoProduto`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FormularioSliceOrcamentoProduto = prismic.SharedSliceVariation<
+  "orcamentoProduto",
+  Simplify<FormularioSliceOrcamentoProdutoPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Formulario*
  */
 type FormularioSliceVariation =
   | FormularioSliceDefault
-  | FormularioSliceOrcamento;
+  | FormularioSliceOrcamento
+  | FormularioSliceOrcamentoProduto;
 
 /**
  * Formulario Shared Slice
@@ -1727,6 +1880,16 @@ export type IntroQuemSomosSlice = prismic.SharedSlice<
  */
 export interface ListaTodosTrabalhosSliceDefaultPrimary {
   /**
+   * Título field in *ListaTodosTrabalhos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lista_todos_trabalhos.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
    * Portfólio categoria field in *ListaTodosTrabalhos → Primary*
    *
    * - **Field Type**: Content Relationship
@@ -2119,10 +2282,14 @@ declare module "@prismicio/client" {
       DetalhesProdutoSlice,
       DetalhesProdutoSliceVariation,
       DetalhesProdutoSliceDefault,
+      DuasColunasSlice,
+      DuasColunasSliceVariation,
+      DuasColunasSliceDefault,
       FormularioSlice,
       FormularioSliceVariation,
       FormularioSliceDefault,
       FormularioSliceOrcamento,
+      FormularioSliceOrcamentoProduto,
       HeroSlice,
       HeroSliceVariation,
       HeroSliceDefault,

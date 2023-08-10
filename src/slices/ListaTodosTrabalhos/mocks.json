@@ -9,6 +9,17 @@
 					"__TYPE__": "DocumentLink",
 					"id": "mock_document_id"
 				}
+			},
+			"titulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "In eu sit ex culpa sit incididunt do labore. Cillum ipsum consectetur amet deserunt dolore nostrud laboris excepteur cupidatat quis occaecat qui do. Enim officia adipisicing ut labore excepteur fugiat irure laboris veniam amet voluptate ullamco exercitation."
+						}
+					}
+				]
 			}
 		},
 		"items": []

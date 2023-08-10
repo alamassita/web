@@ -250,7 +250,7 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
                       >
                         <Link
                           className="nav-link nav-link--internal nav-link--internal__signature"
-                          href="/portfolio/signature"
+                          href="/signature"
                         >
                           <>
                             <strong>Artes únicas</strong>
@@ -263,7 +263,7 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
                         </Link>
                         <Link
                           className="nav-link nav-link--internal nav-link--internal__pret"
-                          href="/portfolio/pret-a-porter"
+                          href="/pret-a-porter"
                         >
                           <>
                             <strong>Soluções com essência</strong>

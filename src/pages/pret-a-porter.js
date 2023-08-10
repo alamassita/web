@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import * as prismic from "@prismicio/client";
 import { isFilled } from "@prismicio/client";
@@ -7,9 +8,20 @@ import { components } from "@/slices";
 import { createClient } from "@/prismicio";
 import sm from "../sm.json";
 
-import { HeroContato } from "../components/Hero";
+import { HeroCategory } from "../components/Hero";
 
-export default function PretAPorter({ page }) {
+export default function PretAPorter({ page, pagesInCategory }) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (pagesInCategory?.length > 0 && page?.data) {
+      console.log("Page, :", page);
+      console.log("pagesInCategory :", pagesInCategory);
+      setLoading(false);
+    }
+  }, [page, pagesInCategory]);
+
+  if (loading) return <div className="loading"></div>;
   return (
     <>
       <Head>
@@ -18,13 +30,17 @@ export default function PretAPorter({ page }) {
           <meta name="description" content={page.data?.meta_description} />
         ) : null}
       </Head>
-      {/* <HeroContato
+      <HeroCategory
         title={page.data?.titulo}
-        subtitle={page.data?.subtitulo}
-        content={page.data?.conteudo}
-      /> */}
-      <h1>Loaded!</h1>
-      <SliceZone slices={page.data?.slices} components={components} />
+        content={page.data?.descricao}
+        image={page.data?.imagem_background}
+        categoriaURI={page?.uid}
+      />
+      <SliceZone
+        slices={page.data?.slices}
+        components={components}
+        context={{ pagesInCategory: pagesInCategory, pageID: page.id }}
+      />
     </>
   );
 }
@@ -49,7 +65,13 @@ export async function getStaticProps() {
     ],
   });
 
+  const categoryID = page.id;
+  // Use the category ID to filter for posts with that category
+  const pagesInCategory = await client.getAllByType("portfolio", {
+    filters: [prismic.filter.at("my.portfolio.categoria", categoryID)],
+  });
+
   return {
-    props: { page },
+    props: { page, pagesInCategory },
   };
 }

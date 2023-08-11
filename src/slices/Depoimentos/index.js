@@ -181,6 +181,12 @@ const CtaSection = styled.div`
       width: 100%;
     }
   }
+  @media screen and (max-width: 720px) {
+    .testimonials-top .testimonials-top--wrapper {
+      align-items: start;
+      flex-direction: column;
+    }
+  }
 }
 `;
 

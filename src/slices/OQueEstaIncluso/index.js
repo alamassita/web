@@ -56,6 +56,21 @@ const ContentInclusoWrapper = styled.section`
       color: rgb(var(--primary-200));
     }
   }
+  @media screen and (max-width: 1180px) {
+    .page-content {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media screen and (max-width: 920px) {
+    .page-content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 720px) {
+    .page-content {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 
 const OQueEstaIncluso = ({ slice }) => {
@@ -68,71 +83,140 @@ const OQueEstaIncluso = ({ slice }) => {
         <div className="page-inner">
           <h3>O que esta incluso?</h3>
         </div>
-        <div className="page-content">
-          <div className="item">
-            <h4>Arte do acervo</h4>
-            <p>
-              Na ALM, quem escolhe a arte são vocês, não importa se está em um
-              modelo diferente de convite, tudo pode ser adaptado. Confira nosso
-              acervo de artes disponíveis!
-            </p>
+        {slice.variation === "signature" ? (
+          <div className="page-content page-content--signature">
+            <div className="item">
+              <h4>Aquarela</h4>
+              <p>
+                Arte exclusiva pintada à mão. Vocês podem escolher o tema de sua
+                preferência (local do casamento, flores que serão usadas na
+                decoração, paisagens,etc.)
+              </p>
+            </div>
+            <div className="item">
+              <h4>Tamanhos & formatos</h4>
+              <p>
+                Vocês terão a flexibilidade de escolher entre todos os tipos de
+                papéis com os quais trabalhamos, escolhendo as fontes e layout
+                junto ao nosso time de designers.
+              </p>
+            </div>
+            <div className="item">
+              <h4>Monograma</h4>
+              <p>
+                Na experiência signature vocês também contam com a criação de
+                monograma virtual (caso desejem monograma em aquarela, temos
+                preços especiais sob consulta)
+              </p>
+            </div>
+            <div className="item">
+              <h4>Cartela de cores</h4>
+              <p>
+                A cartela de cores é um item de grande importância dado que
+                todos os profissionais do seu casamento irão utilizá-la. Caso
+                você já tenha uma desenvolvida, nos envie, caso contrário,
+                podemos criar uma do zero.
+              </p>
+            </div>
+            <div className="item">
+              <h4>Quantidade mínima</h4>
+              <p>
+                Para clientes signature não exigimos quantidade mínima para
+                nenhum item do nosso portifólio.
+              </p>
+            </div>
+            <div className="item">
+              <h4>Amostra física</h4>
+              <p>
+                Além da tradicional aprovação virtual, vocês terão a
+                oportunidade de aprovar os convites com foto e amostra física.
+                (Para os demais itens, a aprovação será somente virtual)
+              </p>
+            </div>
+            <div className="item">
+              <h4>WhatsApp</h4>
+              <p>
+                Atendimento preferencial por whatsapp. Em caso de urgência,
+                pedimos um prazo de 24hrs para retorno, mesmo aos finais de
+                semana
+              </p>
+            </div>
+            <div className="item">
+              <h4>Alterações</h4>
+              <p>
+                Vocês tem direito a até 5 alterações. Por isso, nossa dica é:
+                solicitem todas as alterações necessárias identificadas nas
+                revisões de uma única vez.
+              </p>
+            </div>
           </div>
-          <div className="item">
-            <h4>Tamanhos & formatos</h4>
-            <p>
-              Vocês terão a flexibilidade de escolher entre todos os tipos de
-              papéis com os quais trabalhamos, escolhendo as fontes e layout
-              junto ao nosso time de designers.
-            </p>
+        ) : (
+          <div className="page-content">
+            <div className="item">
+              <h4>Arte do acervo</h4>
+              <p>
+                Na ALM, quem escolhe a arte são vocês, não importa se está em um
+                modelo diferente de convite, tudo pode ser adaptado. Confira
+                nosso acervo de artes disponíveis!
+              </p>
+            </div>
+            <div className="item">
+              <h4>Tamanhos & formatos</h4>
+              <p>
+                Vocês terão a flexibilidade de escolher entre todos os tipos de
+                papéis com os quais trabalhamos, escolhendo as fontes e layout
+                junto ao nosso time de designers.
+              </p>
+            </div>
+            <div className="item">
+              <h4>Monograma</h4>
+              <p>
+                Na experiência prêt - à - porter vocês também contam com nosso
+                catálogo de monogramas. Caso queiram algo exclusivo, é possível
+                incluir esse serviço a parte com custo especial para o pacote.
+              </p>
+            </div>
+            <div className="item">
+              <h4>Cartela de cores</h4>
+              <p>
+                A cartela de cores é um item de grande importância dado que
+                todos os profissionais do seu casamento irão utilizá-la. Caso
+                você já tenha uma desenvolvida, nos envie, caso contrário,
+                podemos criar uma do zero (custo adicional)
+              </p>
+            </div>
+            <div className="item">
+              <h4>Quantidade mínima</h4>
+              <p>
+                Para clientes prêt - à - porter alguns itens poderão ter
+                quantidade mínima necessária. Consulte-nos
+              </p>
+            </div>
+            <div className="item">
+              <h4>Amostra grátis</h4>
+              <p>
+                Na ALM, as aprovações são feitas através de foto, para que
+                possam conferir se tudo está do jeitinho que desejavam!
+              </p>
+            </div>
+            <div className="item">
+              <h4>WhatsApp</h4>
+              <p>
+                Atendimento por whatsapp será realizado exclusivamente para
+                trocas rápidas. Todas as solicitações (pedidos, alterações,
+                inclusões, etc.) deverão ser enviadas e formalizadas por e-mail.
+              </p>
+            </div>
+            <div className="item">
+              <h4>Alterações</h4>
+              <p>
+                Vocês tem direito a até 3 alterações. Por isso, nossa dica é:
+                solicitem todas as alterações necessárias identificadas nas
+                revisões de uma única vez.
+              </p>
+            </div>
           </div>
-          <div className="item">
-            <h4>Monograma</h4>
-            <p>
-              Na experiência prêt - à - porter vocês também contam com nosso
-              catálogo de monogramas. Caso queiram algo exclusivo, é possível
-              incluir esse serviço a parte com custo especial para o pacote.
-            </p>
-          </div>
-          <div className="item">
-            <h4>Cartela de cores</h4>
-            <p>
-              A cartela de cores é um item de grande importância dado que todos
-              os profissionais do seu casamento irão utilizá-la. Caso você já
-              tenha uma desenvolvida, nos envie, caso contrário, podemos criar
-              uma do zero (custo adicional)
-            </p>
-          </div>
-          <div className="item">
-            <h4>Quantidade mínima</h4>
-            <p>
-              Para clientes prêt - à - porter alguns itens poderão ter
-              quantidade mínima necessária. Consulte-nos
-            </p>
-          </div>
-          <div className="item">
-            <h4>Amostra grátis</h4>
-            <p>
-              Na ALM, as aprovações são feitas através de foto, para que possam
-              conferir se tudo está do jeitinho que desejavam!
-            </p>
-          </div>
-          <div className="item">
-            <h4>WhatsApp</h4>
-            <p>
-              Atendimento por whatsapp será realizado exclusivamente para trocas
-              rápidas. Todas as solicitações (pedidos, alterações, inclusões,
-              etc.) deverão ser enviadas e formalizadas por e-mail.
-            </p>
-          </div>
-          <div className="item">
-            <h4>Alterações</h4>
-            <p>
-              Vocês tem direito a até 3 alterações. Por isso, nossa dica é:
-              solicitem todas as alterações necessárias identificadas nas
-              revisões de uma única vez.
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     </ContentInclusoWrapper>
   );

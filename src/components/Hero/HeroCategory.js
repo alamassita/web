@@ -54,6 +54,26 @@ const HeroHome = styled.div`
       margin-bottom: 1rem;
     }
   }
+  .signature {
+    .hero--content {
+      background-color: rgba(var(--gray-800), 0.98);
+      h1 {
+        color: rgb(var(--gray-100));
+      }
+      h2 {
+      }
+      .hero-category {
+        strong {
+          color: rgb(var(--pink-300));
+        }
+      }
+      .hero--large-description {
+        p {
+          color: rgb(var(--gray-100));
+        }
+      }
+    }
+  }
   .hero--large-description {
     max-width: 720px;
     margin: 0 auto;
@@ -138,10 +158,16 @@ const HeroCategory = ({ title, image, content, categoriaURI }) => {
     <HeroSection>
       <div className="hero-wrapper">
         <HeroHome>
-          <div className="page-wrapper">
+          <div className={`page-wrapper ${categoriaURI}`}>
             <div className="hero--inner">
               <div className="hero--content">
                 {categoriaURI === "pret-a-porter" ? (
+                  <div className="hero-category">
+                    <h1>{title[0].text}</h1>
+                    <strong>Experience</strong>
+                  </div>
+                ) : null}
+                {categoriaURI === "signature" ? (
                   <div className="hero-category">
                     <h1>{title[0].text}</h1>
                     <strong>Experience</strong>

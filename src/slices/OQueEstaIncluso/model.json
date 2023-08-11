@@ -10,7 +10,19 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    },
+    {
+      "id": "signature",
+      "name": "Signature",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
     }
   ]
 }

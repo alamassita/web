@@ -184,6 +184,8 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
   const [showSubMenu, setShowSubMenu] = useState(false);
   const dropdown = useRef(null);
   const trigger = useRef(null);
+  const internal = useRef(null);
+  const internal2 = useRef(null);
 
   console.log("pageType", pageType);
 
@@ -193,7 +195,11 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
     function handleClick(event) {
       console.log(event);
       if (!trigger.current.contains(event.target)) {
-        if (dropdown.current && !dropdown.current.contains(event.target)) {
+        if (
+          (dropdown.current && !dropdown.current.contains(event.target)) ||
+          internal.current.contains(event.target) ||
+          internal2.current.contains(event.target)
+        ) {
           setShowSubMenu(false);
         }
       }
@@ -251,6 +257,7 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
                         <Link
                           className="nav-link nav-link--internal nav-link--internal__signature"
                           href="/signature"
+                          ref={internal}
                         >
                           <>
                             <strong>Artes únicas</strong>
@@ -264,6 +271,7 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
                         <Link
                           className="nav-link nav-link--internal nav-link--internal__pret"
                           href="/pret-a-porter"
+                          ref={internal2}
                         >
                           <>
                             <strong>Soluções com essência</strong>

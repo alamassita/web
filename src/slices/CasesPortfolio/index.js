@@ -6,6 +6,7 @@
 
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import Link from "next/link";
 
 import { ButtonWaterColor } from "../../components/Button";
 
@@ -104,7 +105,7 @@ const CasesPortfolioWrapper = styled.section`
 `;
 
 const CasesPortfolio = ({ slice }) => {
-  // console.log(slice);
+  console.log(slice);
   return (
     <CasesPortfolioWrapper>
       {slice?.items?.map((item, i) => (
@@ -118,9 +119,9 @@ const CasesPortfolio = ({ slice }) => {
 
             <div className="card-portfolio--actions">
               <PrismicRichText field={item.categoria.data.conteudo} />
-              <PrismicNextLink field={item.categoria.url}>
+              <Link href={`/${item.categoria.uid}`}>
                 <ButtonWaterColor text="Saiba mais" variation="white" />
-              </PrismicNextLink>
+              </Link>
             </div>
             <PrismicNextImage
               field={item.categoria.data.imagem_destacada}

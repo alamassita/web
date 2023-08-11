@@ -1944,9 +1944,24 @@ export type OQueEstaInclusoSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Signature variation for OQueEstaIncluso Slice
+ *
+ * - **API ID**: `signature`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OQueEstaInclusoSliceSignature = prismic.SharedSliceVariation<
+  "signature",
+  Record<string, never>,
+  never
+>;
+
+/**
  * Slice variation for *OQueEstaIncluso*
  */
-type OQueEstaInclusoSliceVariation = OQueEstaInclusoSliceDefault;
+type OQueEstaInclusoSliceVariation =
+  | OQueEstaInclusoSliceDefault
+  | OQueEstaInclusoSliceSignature;
 
 /**
  * OQueEstaIncluso Shared Slice
@@ -2311,6 +2326,7 @@ declare module "@prismicio/client" {
       OQueEstaInclusoSlice,
       OQueEstaInclusoSliceVariation,
       OQueEstaInclusoSliceDefault,
+      OQueEstaInclusoSliceSignature,
       OurMottoSlice,
       OurMottoSliceVariation,
       OurMottoSliceDefault,

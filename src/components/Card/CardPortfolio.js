@@ -43,7 +43,7 @@ const CardPortfolioWrapper = styled.div`
 `;
 
 const CardPortfolio = ({ url, image, title }) => {
-  console.log("image", image);
+  //console.log("image", image);
   return (
     <CardPortfolioWrapper>
       <Link href={`/portfolio/${url}`}>

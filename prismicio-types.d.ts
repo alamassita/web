@@ -316,6 +316,78 @@ export type DepoimentoDocument<Lang extends string = string> =
     Lang
   >;
 
+type DepoimentosDocumentDataSlicesSlice =
+  | DuasColunasSlice
+  | CasesPortfolioSlice
+  | FormularioSlice
+  | HeroSlice
+  | QuemSouEuSlice
+  | DepoimentosSlice;
+
+/**
+ * Content for Depoimentos documents
+ */
+interface DepoimentosDocumentData {
+  /**
+   * Slice Zone field in *Depoimentos*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimentos.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<DepoimentosDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Depoimentos*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: depoimentos.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Depoimentos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimentos.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Depoimentos*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: depoimentos.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Depoimentos document from Prismic
+ *
+ * - **API ID**: `depoimentos`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DepoimentosDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<DepoimentosDocumentData>,
+    "depoimentos",
+    Lang
+  >;
+
 type HomepageDocumentDataSlicesSlice =
   | HeroSlice
   | DepoimentosSlice
@@ -395,7 +467,8 @@ type PortfolioDocumentDataSlicesSlice =
   | HeroSlice
   | DetalhesProdutoSlice
   | OQueEstaInclusoSlice
-  | ListaTodosTrabalhosSlice;
+  | ListaTodosTrabalhosSlice
+  | GaleriaSlice;
 
 /**
  * Content for Portfólio documents
@@ -511,7 +584,8 @@ type PortfolioCategoriaDocumentDataSlicesSlice =
   | OQueEstaInclusoSlice
   | DepoimentosSlice
   | IntroQuemSomosSlice
-  | DuasColunasSlice;
+  | DuasColunasSlice
+  | GaleriaSlice;
 
 /**
  * Content for Portfólio Categoria documents
@@ -721,6 +795,7 @@ export type AllDocumentTypes =
   | ComoComprarDocument
   | ContatoDocument
   | DepoimentoDocument
+  | DepoimentosDocument
   | HomepageDocument
   | PortfolioDocument
   | PortfolioCategoriaDocument
@@ -1097,11 +1172,40 @@ export type DepoimentosSliceCallToAction = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Depoimentos → Primary*
+ */
+export interface DepoimentosSliceTodosOsDepoimentosPrimary {
+  /**
+   * Título field in *Depoimentos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: depoimentos.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+}
+
+/**
+ * Todos os depoimentos variation for Depoimentos Slice
+ *
+ * - **API ID**: `todosOsDepoimentos`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DepoimentosSliceTodosOsDepoimentos = prismic.SharedSliceVariation<
+  "todosOsDepoimentos",
+  Simplify<DepoimentosSliceTodosOsDepoimentosPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Depoimentos*
  */
 type DepoimentosSliceVariation =
   | DepoimentosSliceDefault
-  | DepoimentosSliceCallToAction;
+  | DepoimentosSliceCallToAction
+  | DepoimentosSliceTodosOsDepoimentos;
 
 /**
  * Depoimentos Shared Slice
@@ -1428,6 +1532,87 @@ type FormularioSliceVariation =
 export type FormularioSlice = prismic.SharedSlice<
   "formulario",
   FormularioSliceVariation
+>;
+
+/**
+ * Primary content in *Galeria → Primary*
+ */
+export interface GaleriaSliceDefaultPrimary {
+  /**
+   * Galeria layout field in *Galeria → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: rows
+   * - **API ID Path**: galeria.primary.galeria_layout
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  galeria_layout: prismic.SelectField<"rows" | "columns" | "masonry", "filled">;
+
+  /**
+   * Título field in *Galeria → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galeria.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *Galeria → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galeria.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Galeria → Items*
+ */
+export interface GaleriaSliceDefaultItem {
+  /**
+   * Imagem field in *Galeria → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galeria.items[].imagem
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Galeria Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GaleriaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GaleriaSliceDefaultPrimary>,
+  Simplify<GaleriaSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Galeria*
+ */
+type GaleriaSliceVariation = GaleriaSliceDefault;
+
+/**
+ * Galeria Shared Slice
+ *
+ * - **API ID**: `galeria`
+ * - **Description**: Galeria
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GaleriaSlice = prismic.SharedSlice<
+  "galeria",
+  GaleriaSliceVariation
 >;
 
 /**
@@ -2273,6 +2458,8 @@ declare module "@prismicio/client" {
       ContatoDocumentData,
       DepoimentoDocument,
       DepoimentoDocumentData,
+      DepoimentosDocument,
+      DepoimentosDocumentData,
       HomepageDocument,
       HomepageDocumentData,
       PortfolioDocument,
@@ -2294,6 +2481,7 @@ declare module "@prismicio/client" {
       DepoimentosSliceVariation,
       DepoimentosSliceDefault,
       DepoimentosSliceCallToAction,
+      DepoimentosSliceTodosOsDepoimentos,
       DetalhesProdutoSlice,
       DetalhesProdutoSliceVariation,
       DetalhesProdutoSliceDefault,
@@ -2305,6 +2493,9 @@ declare module "@prismicio/client" {
       FormularioSliceDefault,
       FormularioSliceOrcamento,
       FormularioSliceOrcamentoProduto,
+      GaleriaSlice,
+      GaleriaSliceVariation,
+      GaleriaSliceDefault,
       HeroSlice,
       HeroSliceVariation,
       HeroSliceDefault,

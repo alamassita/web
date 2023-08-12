@@ -19,8 +19,10 @@
     "next": "13.4.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-photo-album": "^2.2.2",
     "styled-components": "^6.0.5",
-    "swiper": "^10.0.4"
+    "swiper": "^10.0.4",
+    "yet-another-react-lightbox": "^3.12.0"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.6",

@@ -239,7 +239,9 @@ const Hero = ({ slice }) => {
       className={slice.variation}
     >
       <div className="hero-wrapper">
-        {slice.variation === "home" || slice.variation === "comoComprar" ? (
+        {slice.variation === "home" ||
+        slice.variation === "comoComprar" ||
+        slice.variation === "default" ? (
           <HeroHome>
             <div className="page-wrapper">
               <div className="hero--inner">

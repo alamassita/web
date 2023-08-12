@@ -51,7 +51,8 @@
             "hero": { "type": "SharedSlice" },
             "detalhes_produto": { "type": "SharedSlice" },
             "o_que_esta_incluso": { "type": "SharedSlice" },
-            "lista_todos_trabalhos": { "type": "SharedSlice" }
+            "lista_todos_trabalhos": { "type": "SharedSlice" },
+            "galeria": { "type": "SharedSlice" }
           }
         }
       }

@@ -7,6 +7,7 @@
 import React, { useRef, useEffect } from "react";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import Link from "next/link";
 import Image from "next/image";
 
 import { ButtonWaterColor } from "../../components/Button";
@@ -253,6 +254,8 @@ const Depoimentos = ({ slice }) => {
     }
   }, [slice, isInView]);
 
+  console.log("depoimentos slice", slice);
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -354,12 +357,12 @@ const Depoimentos = ({ slice }) => {
                 </div>
                 <div className="testimonials-desc">
                   <PrismicRichText field={slice.primary.conteudo} />
-                  <PrismicNextLink field={slice.primary.url}>
+                  <Link href={`/${slice.primary.url.slug}`}>
                     <ButtonWaterColor
                       text="Ver depoimentos"
                       variation="primary"
                     />
-                  </PrismicNextLink>
+                  </Link>
                 </div>
               </div>
             </div>

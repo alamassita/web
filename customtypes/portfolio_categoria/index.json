@@ -64,7 +64,8 @@
             "o_que_esta_incluso": { "type": "SharedSlice" },
             "depoimentos": { "type": "SharedSlice" },
             "intro_quem_somos": { "type": "SharedSlice" },
-            "duas_colunas": { "type": "SharedSlice" }
+            "duas_colunas": { "type": "SharedSlice" },
+            "galeria": { "type": "SharedSlice" }
           }
         }
       }

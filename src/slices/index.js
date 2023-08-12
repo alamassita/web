@@ -9,6 +9,7 @@ export const components = {
   detalhes_produto: dynamic(() => import("./DetalhesProduto")),
   duas_colunas: dynamic(() => import("./DuasColunas")),
   formulario: dynamic(() => import("./Formulario")),
+  galeria: dynamic(() => import("./Galeria")),
   hero: dynamic(() => import("./Hero")),
   intro_como_comprar: dynamic(() => import("./IntroComoComprar")),
   intro_home: dynamic(() => import("./IntroHome")),

@@ -6,7 +6,8 @@
 
 import React from "react";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage } from "@prismicio/next";
+import Link from "next/link";
 
 import { ButtonWaterColor } from "../../components/Button";
 
@@ -103,9 +104,9 @@ const QuemSouEu = ({ slice }) => {
             </div>
             <div className="quem-content">
               <PrismicRichText field={slice.primary.conteudo} />
-              <PrismicNextLink field={slice.primary.url}>
+              <Link href={`/quem-somos`}>
                 <ButtonWaterColor text="Saiba mais" variation="primary" />
-              </PrismicNextLink>
+              </Link>
             </div>
           </div>
         </div>

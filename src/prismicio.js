@@ -21,13 +21,6 @@ const routes = [
     type: "homepage",
     path: "/",
   },
-  // {
-  //   type: "portfolio",
-  //   resolvers: {
-  //     portfolio_categoria: "portfolio_categoria",
-  //   },
-  //   path: "/:portfolio_categoria/:uid",
-  // },
   {
     type: "page",
     path: "/:uid",

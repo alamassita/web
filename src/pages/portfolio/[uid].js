@@ -74,6 +74,7 @@ export async function getStaticProps({ params, previewData }) {
 
   return {
     props: { page, pagesInCategory },
+    revalidate: 60 * 60,
   };
 }
 
@@ -86,6 +87,6 @@ export async function getStaticPaths() {
     paths: pages.map((page) => {
       return asLink(page);
     }),
-    fallback: false,
+    fallback: true,
   };
 }

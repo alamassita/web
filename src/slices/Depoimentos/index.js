@@ -60,7 +60,6 @@ const CtaSection = styled.div`
     margin-bottom: 6rem;
     padding-top: 7rem;
     color: rgb(var(--gray-800));
-    font-family: Gallery Modern;
     font-size: 7rem;
     font-style: normal;
     font-weight: 400;

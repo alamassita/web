@@ -5,7 +5,7 @@ export default function NextJsImageAlbum({
   imageProps: { alt, title, sizes, className, onClick },
   wrapperStyle,
 }) {
-  console.log("Photo album: ", photo);
+  //console.log("Photo album: ", photo);
   return (
     <div style={{ ...wrapperStyle, position: "relative" }}>
       <Image

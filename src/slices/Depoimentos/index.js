@@ -244,7 +244,20 @@ const DefaultSection = styled.div`
   }
 `;
 
-const Depoimentos = ({ slice }) => {
+const AllTestimonialsWrapper = styled.div`
+  .grid-testimonials {
+    padding-top: 6rem;
+    max-width: 720px;
+    margin: 0 auto;
+    .card-large {
+      padding-bottom: 2rem;
+      border-bottom: 1px dotted rgb(var(--mint-200));
+      margin-top: 3rem;
+    }
+  }
+`;
+
+const Depoimentos = ({ slice, context }) => {
   const imageWaterColorRef = useRef(null);
   const isInView = useInView(imageWaterColorRef);
 
@@ -254,7 +267,8 @@ const Depoimentos = ({ slice }) => {
     }
   }, [slice, isInView]);
 
-  console.log("depoimentos slice", slice);
+  //console.log("depoimentos slice", slice);
+  console.log("Testimonials, :", context.allTestimonials);
 
   return (
     <section
@@ -368,6 +382,26 @@ const Depoimentos = ({ slice }) => {
             </div>
           </div>
         </CtaSection>
+      ) : (
+        ""
+      )}
+      {slice.variation === "todosOsDepoimentos" ? (
+        <AllTestimonialsWrapper>
+          <div className="testimonials-wrapper">
+            <div className="page-wrapper">
+              <div className="grid-testimonials">
+                {context.allTestimonials?.map((item, i) => (
+                  <div
+                    className={`card-depoimento card-depoimento--${i} id-${item.id}`}
+                    key={`test$imonial-${slice.variation}-${item.id}`}
+                  >
+                    <CardDepoimento testimonial={item} variation="large" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </AllTestimonialsWrapper>
       ) : (
         ""
       )}

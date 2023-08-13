@@ -322,7 +322,8 @@ type DepoimentosDocumentDataSlicesSlice =
   | FormularioSlice
   | HeroSlice
   | QuemSouEuSlice
-  | DepoimentosSlice;
+  | DepoimentosSlice
+  | DepoimentosEstrelasSlice;
 
 /**
  * Content for Depoimentos documents
@@ -458,6 +459,77 @@ export type HomepageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<
     Simplify<HomepageDocumentData>,
     "homepage",
+    Lang
+  >;
+
+type PaginaPortfolioDocumentDataSlicesSlice =
+  | QuemSouEuSlice
+  | WhatsAppSlice
+  | CasesPortfolioSlice
+  | FormularioSlice
+  | HeroSlice;
+
+/**
+ * Content for Página Portfólio documents
+ */
+interface PaginaPortfolioDocumentData {
+  /**
+   * Slice Zone field in *Página Portfólio*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pagina_portfolio.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PaginaPortfolioDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Página Portfólio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: pagina_portfolio.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Página Portfólio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pagina_portfolio.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Página Portfólio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: pagina_portfolio.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Página Portfólio document from Prismic
+ *
+ * - **API ID**: `pagina_portfolio`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PaginaPortfolioDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<PaginaPortfolioDocumentData>,
+    "pagina_portfolio",
     Lang
   >;
 
@@ -797,6 +869,7 @@ export type AllDocumentTypes =
   | DepoimentoDocument
   | DepoimentosDocument
   | HomepageDocument
+  | PaginaPortfolioDocument
   | PortfolioDocument
   | PortfolioCategoriaDocument
   | QuemSomosDocument;
@@ -1217,6 +1290,36 @@ type DepoimentosSliceVariation =
 export type DepoimentosSlice = prismic.SharedSlice<
   "depoimentos",
   DepoimentosSliceVariation
+>;
+
+/**
+ * Default variation for DepoimentosEstrelas Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DepoimentosEstrelasSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *DepoimentosEstrelas*
+ */
+type DepoimentosEstrelasSliceVariation = DepoimentosEstrelasSliceDefault;
+
+/**
+ * DepoimentosEstrelas Shared Slice
+ *
+ * - **API ID**: `depoimentos_estrelas`
+ * - **Description**: DepoimentosEstrelas
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DepoimentosEstrelasSlice = prismic.SharedSlice<
+  "depoimentos_estrelas",
+  DepoimentosEstrelasSliceVariation
 >;
 
 /**
@@ -1848,13 +1951,72 @@ export type HeroSliceQuemSomos = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Hero → Primary*
+ */
+export interface HeroSlicePaginaPortfolioPrimary {
+  /**
+   * Titulo field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Subtitulo field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * Imagem destacada field in *Hero → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.imagem_destacada
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+
+  /**
+   * Conteúdo field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+}
+
+/**
+ * Página Portfólio variation for Hero Slice
+ *
+ * - **API ID**: `paginaPortfolio`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSlicePaginaPortfolio = prismic.SharedSliceVariation<
+  "paginaPortfolio",
+  Simplify<HeroSlicePaginaPortfolioPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Hero*
  */
 type HeroSliceVariation =
   | HeroSliceDefault
   | HeroSliceHome
   | HeroSliceComoComprar
-  | HeroSliceQuemSomos;
+  | HeroSliceQuemSomos
+  | HeroSlicePaginaPortfolio;
 
 /**
  * Hero Shared Slice
@@ -2462,6 +2624,8 @@ declare module "@prismicio/client" {
       DepoimentosDocumentData,
       HomepageDocument,
       HomepageDocumentData,
+      PaginaPortfolioDocument,
+      PaginaPortfolioDocumentData,
       PortfolioDocument,
       PortfolioDocumentData,
       PortfolioCategoriaDocument,
@@ -2482,6 +2646,9 @@ declare module "@prismicio/client" {
       DepoimentosSliceDefault,
       DepoimentosSliceCallToAction,
       DepoimentosSliceTodosOsDepoimentos,
+      DepoimentosEstrelasSlice,
+      DepoimentosEstrelasSliceVariation,
+      DepoimentosEstrelasSliceDefault,
       DetalhesProdutoSlice,
       DetalhesProdutoSliceVariation,
       DetalhesProdutoSliceDefault,
@@ -2502,6 +2669,7 @@ declare module "@prismicio/client" {
       HeroSliceHome,
       HeroSliceComoComprar,
       HeroSliceQuemSomos,
+      HeroSlicePaginaPortfolio,
       IntroComoComprarSlice,
       IntroComoComprarSliceVariation,
       IntroComoComprarSliceDefault,

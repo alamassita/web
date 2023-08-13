@@ -6,6 +6,7 @@ export const components = {
   cases_portfolio: dynamic(() => import("./CasesPortfolio")),
   como_trabalhamos: dynamic(() => import("./ComoTrabalhamos")),
   depoimentos: dynamic(() => import("./Depoimentos")),
+  depoimentos_estrelas: dynamic(() => import("./DepoimentosEstrelas")),
   detalhes_produto: dynamic(() => import("./DetalhesProduto")),
   duas_colunas: dynamic(() => import("./DuasColunas")),
   formulario: dynamic(() => import("./Formulario")),

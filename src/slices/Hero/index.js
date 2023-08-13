@@ -231,7 +231,7 @@ const HeroHome = styled.div`
 `;
 
 const Hero = ({ slice }) => {
-  console.log(slice);
+  //console.log(slice);
   return (
     <HeroSection
       data-slice-type={slice.slice_type}
@@ -329,6 +329,48 @@ const Hero = ({ slice }) => {
                   <PrismicRichText field={slice.primary.conteudo} />
                 </div>
               </div>
+            </div>
+          </HeroHome>
+        ) : null}
+        {slice.variation === "paginaPortfolio" ? (
+          <HeroHome>
+            <div className="page-wrapper">
+              <div className="hero--inner">
+                <motion.div
+                  className="stamp"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{
+                    ease: "linear",
+                    duration: 10,
+                    repeat: Infinity,
+                  }}
+                >
+                  <StampAmorCuidado />
+                </motion.div>
+                <div className="hero--content">
+                  {slice.primary.subtitulo ? (
+                    <PrismicRichText field={slice.primary.subtitulo} />
+                  ) : (
+                    ""
+                  )}
+                  {slice.primary.titulo ? (
+                    <PrismicRichText field={slice.primary.titulo} />
+                  ) : (
+                    ""
+                  )}
+                  {slice.primary.conteudo ? (
+                    <div className="hero--large-description">
+                      <PrismicRichText field={slice.primary.conteudo} />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+              <PrismicNextImage
+                field={slice.primary.imagem_destacada}
+                imgixParams={{ q: 100 }}
+              />
             </div>
           </HeroHome>
         ) : null}

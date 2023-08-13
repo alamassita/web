@@ -13,16 +13,6 @@ const Card = styled.div`
     grid-gap: 16px;
     align-items: center;
     margin-bottom: 1.5rem;
-    .card-image {
-      flex: 0 0 52px;
-      border-radius: 50%;
-      overflow: hidden;
-      aspect-ratio: 1;
-      border: 2px solid rgb(var(--mint-300));
-      img {
-        object-fit: cover;
-      }
-    }
     .icon-star {
       display: flex;
       height: 16px;
@@ -42,6 +32,16 @@ const Card = styled.div`
       font-weight: 400;
       line-height: 1.2em;
       margin: 0;
+    }
+  }
+  .card-image {
+    flex: 0 0 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    aspect-ratio: 1;
+    border: 2px solid rgb(var(--mint-300));
+    img {
+      object-fit: cover;
     }
   }
   .card-quote {
@@ -81,39 +81,85 @@ const Card = styled.div`
       color: rgb(var(--gray-500));
     }
   }
+  &.card-large {
+    display: flex;
+    grid-gap: 24px;
+    margin-bottom: 2rem;
+    .card-image {
+      align-self: flex-start;
+    }
+  }
 `;
 
-const CardDepoimento = ({ testimonial }) => {
-  // console.log(testimonial);
+const CardDepoimento = ({ testimonial, variation }) => {
+  //console.log("Inside card: ", testimonial);
   return (
-    <Card>
-      <div className="card-header">
-        <div className="card-image">
-          <PrismicNextImage
-            field={testimonial.data?.foto}
-            imgixParams={{ q: 100 }}
-            className="img-fluid"
-          />
-        </div>
-        <div className="card-title">
-          <PrismicRichText field={testimonial.data?.nome} />
-          <div className="icon-star">
-            <IconStar />
-            <IconStar />
-            <IconStar />
-            <IconStar />
-            <IconStar />
+    <Card
+      className={`${variation === "large" ? "card-large" : "card-default"}`}
+    >
+      {variation === "large" ? (
+        <>
+          <div className="card-image">
+            <PrismicNextImage
+              field={testimonial.data?.foto}
+              imgixParams={{ q: 100 }}
+              className="img-fluid"
+            />
           </div>
-        </div>
-      </div>
-      <div className="card-body">
-        <div className="card-quote">
-          <PrismicRichText field={testimonial.data?.citacao} />
-        </div>
-        <div className="card-content">
-          <PrismicRichText field={testimonial.data?.conteudo} />
-        </div>
-      </div>
+          <div className="card-content">
+            <div className="card-header">
+              <div className="card-title">
+                <PrismicRichText field={testimonial.data?.nome} />
+                <div className="icon-star">
+                  <IconStar />
+                  <IconStar />
+                  <IconStar />
+                  <IconStar />
+                  <IconStar />
+                </div>
+              </div>
+            </div>
+            <div className="card-body">
+              <div className="card-quote">
+                <PrismicRichText field={testimonial.data?.citacao} />
+              </div>
+              <div className="card-content">
+                <PrismicRichText field={testimonial.data?.conteudo} />
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="card-header">
+            <div className="card-image">
+              <PrismicNextImage
+                field={testimonial.data?.foto}
+                imgixParams={{ q: 100 }}
+                className="img-fluid"
+              />
+            </div>
+            <div className="card-title">
+              <PrismicRichText field={testimonial.data?.nome} />
+              <div className="icon-star">
+                <IconStar />
+                <IconStar />
+                <IconStar />
+                <IconStar />
+                <IconStar />
+              </div>
+            </div>
+          </div>
+          <div className="card-body">
+            <div className="card-quote">
+              <PrismicRichText field={testimonial.data?.citacao} />
+            </div>
+            <div className="card-content">
+              <PrismicRichText field={testimonial.data?.conteudo} />
+            </div>
+          </div>
+        </>
+      )}
     </Card>
   );
 };

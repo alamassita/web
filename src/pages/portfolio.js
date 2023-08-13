@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import * as prismic from "@prismicio/client";
 import { isFilled } from "@prismicio/client";
@@ -8,16 +7,7 @@ import { components } from "@/slices";
 import { createClient } from "@/prismicio";
 import sm from "../sm.json";
 
-export default function Depoimentos({ page, allTestimonials }) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (page?.data && allTestimonials) {
-      setLoading(false);
-    }
-  }, [page]);
-
-  if (loading) return <div className="loading"></div>;
+export default function Portfolio({ page }) {
   return (
     <>
       <Head>
@@ -26,11 +16,7 @@ export default function Depoimentos({ page, allTestimonials }) {
           <meta name="description" content={page.data?.meta_description} />
         ) : null}
       </Head>
-      <SliceZone
-        slices={page.data?.slices}
-        components={components}
-        context={{ allTestimonials: allTestimonials }}
-      />
+      <SliceZone slices={page.data?.slices} components={components} />
     </>
   );
 }
@@ -40,7 +26,7 @@ export async function getStaticProps() {
   // drafts from the Page Builder.
   const client = prismic.createClient(sm.apiEndpoint);
 
-  const page = await client.getByUID("depoimentos", "depoimentos", {
+  const page = await client.getByUID("pagina_portfolio", "portfolio", {
     fetchLinks: [
       "portfolio_categoria.uid",
       "portfolio_categoria.titulo",
@@ -55,9 +41,7 @@ export async function getStaticProps() {
     ],
   });
 
-  const allTestimonials = await client.getAllByType("depoimento");
-
   return {
-    props: { page, allTestimonials },
+    props: { page },
   };
 }

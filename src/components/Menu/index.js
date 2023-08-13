@@ -187,13 +187,13 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
   const internal = useRef(null);
   const internal2 = useRef(null);
 
-  console.log("pageType", pageType);
+  //console.log("pageType", pageType);
 
   useEffect(() => {
     // only add the event listener when the dropdown is opened
     if (!showSubMenu) return;
     function handleClick(event) {
-      console.log(event);
+      //console.log(event);
       if (!trigger.current.contains(event.target)) {
         if (
           (dropdown.current && !dropdown.current.contains(event.target)) ||
@@ -224,7 +224,7 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
           )}
           {menuPosition === "footer" ? (
             <li>
-              <Link className="nav-link" href="/">
+              <Link className="nav-link" href="/portfolio">
                 Portfolio
               </Link>
             </li>

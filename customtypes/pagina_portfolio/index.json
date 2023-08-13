@@ -1,6 +1,6 @@
 {
-  "id": "depoimentos",
-  "label": "Depoimentos",
+  "id": "pagina_portfolio",
+  "label": "Página Portfólio",
   "format": "page",
   "repeatable": false,
   "status": true,
@@ -12,13 +12,11 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "duas_colunas": { "type": "SharedSlice" },
+            "quem_sou_eu": { "type": "SharedSlice" },
+            "whats_app": { "type": "SharedSlice" },
             "cases_portfolio": { "type": "SharedSlice" },
             "formulario": { "type": "SharedSlice" },
-            "hero": { "type": "SharedSlice" },
-            "quem_sou_eu": { "type": "SharedSlice" },
-            "depoimentos": { "type": "SharedSlice" },
-            "depoimentos_estrelas": { "type": "SharedSlice" }
+            "hero": { "type": "SharedSlice" }
           }
         }
       }

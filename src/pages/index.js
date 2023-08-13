@@ -8,7 +8,7 @@ import { createClient } from "@/prismicio";
 import sm from "../sm.json";
 
 export default function Home({ page }) {
-  console.log(page);
+  //console.log(page);
   return (
     <>
       <Head>

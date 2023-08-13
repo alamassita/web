@@ -55,7 +55,7 @@ const GalleryWrapper = styled.section`
 
 const Galeria = ({ slice }) => {
   const [index, setIndex] = useState(-1);
-  console.log("Galeria: ", slice);
+  //console.log("Galeria: ", slice);
   const allImages = slice.items.map((item) => {
     return item.imagem.url;
   });
@@ -67,8 +67,8 @@ const Galeria = ({ slice }) => {
       alt: item.imagem.alt,
     };
   });
-  console.log("Images: ", allImages);
-  console.log("Images slice: ", slice.items);
+  //console.log("Images: ", allImages);
+  //console.log("Images slice: ", slice.items);
 
   return (
     <GalleryWrapper

@@ -1,0 +1,16 @@
+{
+  "id": "depoimentos_estrelas",
+  "type": "SharedSlice",
+  "name": "DepoimentosEstrelas",
+  "description": "DepoimentosEstrelas",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

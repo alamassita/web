@@ -94,12 +94,21 @@ const QuemSomosImageWrapper = styled.section`
   }
 `;
 const QuemSomosImage = ({ slice }) => {
-  const imageWaterColorRef = useRef(null);
-  const isInView = useInView(imageWaterColorRef);
+  const imageEffectInner = useRef(null);
+  const isInView = useInView(imageEffectInner);
 
   useEffect(() => {
-    imageWaterColorRef.current.classList.toggle("is-active");
+    if (imageEffectInner.current) {
+      if (isInView) {
+        console.log("isInView true");
+        imageEffectInner.current.classList.add("is-active");
+      } else {
+        console.log("isInView false");
+        imageEffectInner.current.classList.remove("is-active");
+      }
+    }
   }, [isInView]);
+
   return (
     <QuemSomosImageWrapper
       data-slice-type={slice.slice_type}
@@ -110,7 +119,7 @@ const QuemSomosImage = ({ slice }) => {
           <div className="section-image">
             <motion.div
               className="js-ink-trigger c-transition "
-              ref={imageWaterColorRef}
+              ref={imageEffectInner}
             >
               <PrismicNextImage
                 field={slice.primary.imagem_destacada}

@@ -261,13 +261,19 @@ const Depoimentos = ({ slice, context }) => {
   const isInView = useInView(imageWaterColorRef);
 
   useEffect(() => {
-    if (slice?.variation === "callToAction") {
-      imageWaterColorRef?.current.classList.toggle("is-active");
+    if (slice?.variation === "callToAction" && imageWaterColorRef.current) {
+      if (isInView) {
+        console.log("isInView true");
+        imageWaterColorRef.current.classList.add("is-active");
+      } else {
+        console.log("isInView false");
+        imageWaterColorRef.current.classList.remove("is-active");
+      }
     }
   }, [slice, isInView]);
 
   //console.log("depoimentos slice", slice);
-  console.log("Testimonials, :", context.allTestimonials);
+  //console.log("Testimonials, :", context.allTestimonials);
 
   return (
     <section

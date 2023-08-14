@@ -32,6 +32,7 @@ const HeroSection = styled.section`
   h1 {
     color: rgb(var(--gray-800));
     font-size: 7rem;
+    font-size: clamp(3.5rem, 10vw, 7rem);
     line-height: 100%; /* 7rem */
     letter-spacing: -0.07rem;
     display: inline-block;

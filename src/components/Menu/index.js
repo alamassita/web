@@ -180,7 +180,7 @@ const MainMenu = styled.nav`
   }
 `;
 
-const Menu = ({ activePage, pageType, menuPosition }) => {
+const Menu = ({ activePage, pageType, menuPosition, setMobileMenu }) => {
   const [showSubMenu, setShowSubMenu] = useState(false);
   const dropdown = useRef(null);
   const trigger = useRef(null);
@@ -258,6 +258,11 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
                           className="nav-link nav-link--internal nav-link--internal__signature"
                           href="/signature"
                           ref={internal}
+                          onClick={
+                            menuPosition === "header"
+                              ? () => setMobileMenu(false)
+                              : null
+                          }
                         >
                           <>
                             <strong>Artes únicas</strong>
@@ -272,6 +277,11 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
                           className="nav-link nav-link--internal nav-link--internal__pret"
                           href="/pret-a-porter"
                           ref={internal2}
+                          onClick={
+                            menuPosition === "header"
+                              ? () => setMobileMenu(false)
+                              : null
+                          }
                         >
                           <>
                             <strong>Soluções com essência</strong>
@@ -293,6 +303,9 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
                 pageType === "como_comprar" ? "active" : ""
               }`}
               href="/como-comprar"
+              onClick={
+                menuPosition === "header" ? () => setMobileMenu(false) : null
+              }
             >
               Como comprar
             </Link>
@@ -303,6 +316,9 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
                 pageType === "quem_somos" ? "active" : ""
               }`}
               href="/quem-somos"
+              onClick={
+                menuPosition === "header" ? () => setMobileMenu(false) : null
+              }
             >
               Quem somos
             </Link>
@@ -311,6 +327,9 @@ const Menu = ({ activePage, pageType, menuPosition }) => {
             <Link
               className={`nav-link ${pageType === "contato" ? "active" : ""}`}
               href="/contato"
+              onClick={
+                menuPosition === "header" ? () => setMobileMenu(false) : null
+              }
             >
               Contato
             </Link>

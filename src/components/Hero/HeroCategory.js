@@ -46,6 +46,7 @@ const HeroHome = styled.div`
       text-align: center;
       font-family: var(--font-gallery);
       font-size: 5.75rem;
+      font-size: clamp(3.5rem, 10vw, 5.75rem);
       font-style: normal;
       font-weight: 400;
       line-height: normal;

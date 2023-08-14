@@ -62,7 +62,7 @@ const WrapperHeader = styled.header`
       transition: 300ms transform ease-in-out, 300ms opacity ease-in-out;
       transform: translate3d(100%, 0, 0);
       opacity: 0;
-      visibility: hidden;
+      // visibility: hidden;
       &.is-active {
         opacity: 1;
         transform: translate3d(0, 0, 0);
@@ -164,6 +164,7 @@ const Header = ({ activePage, pageType }) => {
             activePage={activePage}
             pageType={pageType}
             menuPosition="header"
+            setMobileMenu={setMobileMenu}
           />
         </div>
 

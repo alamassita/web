@@ -39,6 +39,11 @@ const DetailsSection = styled.section`
     margin: 2rem auto;
     color: rgb(var(--gray-300));
   }
+  @media screen and (max-width: 1001px) {
+    .product-image {
+      margin-top: -6.5rem;
+    }
+  }
 `;
 
 const DetalhesProduto = ({ slice }) => {

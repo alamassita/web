@@ -17,6 +17,7 @@ const ListaTodosTrabalhosWrapper = styled.section`
       color: rgb(var(--gray-800));
       text-align: center;
       font-size: 3.875rem;
+      font-size: clamp(2.5rem, 10vw, 3.875rem);
       font-style: normal;
       font-weight: 400;
       line-height: normal;
@@ -28,6 +29,21 @@ const ListaTodosTrabalhosWrapper = styled.section`
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2.5rem;
     padding: 2rem 0 8rem 0;
+  }
+  @media screen and (max-width: 1001px) {
+    .works-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media screen and (max-width: 820px) {
+    .works-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 520px) {
+    .works-grid {
+      grid-template-columns: 1fr;
+    }
   }
 `;
 

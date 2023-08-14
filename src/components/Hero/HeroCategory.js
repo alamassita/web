@@ -120,6 +120,7 @@ const HeroHome = styled.div`
   @media screen and (max-width: 1001px) {
     .hero--content {
       padding: 6rem 3rem;
+      padding: clamp(2rem, 10vw, 6rem) clamp(1rem, 10vw, 3rem);
     }
     .hero--grid {
       display: grid;

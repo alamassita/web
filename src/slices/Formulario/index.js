@@ -30,6 +30,7 @@ const FormularioWrapper = styled.section`
     h3 {
       color: rgb(var(--gray-800));
       font-size: 5.125rem;
+      font-size: clamp(3.5rem, 10vw, 5.75rem);
       font-style: normal;
       font-weight: 400;
       line-height: 1em;
@@ -47,6 +48,7 @@ const FormularioWrapper = styled.section`
     h3 {
       color: rgb(var(--gray-800));
       font-size: 5.125rem;
+      font-size: clamp(3.5rem, 10vw, 5.75rem);
       font-style: normal;
       font-weight: 400;
       line-height: 1em;
@@ -66,6 +68,7 @@ const FormularioWrapper = styled.section`
       color: rgb(var(--gray-800));
       font-family: var(--font-gallery);
       font-size: 3.875rem;
+      font-size: clamp(3rem, 10vw, 3.875rem);
       font-style: normal;
       font-weight: 400;
       line-height: normal;

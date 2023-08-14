@@ -39,7 +39,7 @@ const OurMottWrapper = styled.section`
       font-size: 1rem;
       font-style: normal;
       font-weight: 700;
-      line-height: 150%;
+      line-height: 1.5em;
       letter-spacing: 0.06rem;
       margin-bottom: 2rem;
       text-transform: uppercase;
@@ -47,6 +47,7 @@ const OurMottWrapper = styled.section`
     h3 {
       color: rgb(var(--primary-300));
       font-size: 5.125rem;
+      font-size: clamp(3.5rem, 10vw, 5.125rem);
       font-style: normal;
       font-weight: 400;
       line-height: 1em;
@@ -58,6 +59,7 @@ const OurMottWrapper = styled.section`
       text-align: center;
       font-family: var(--font-geomanist);
       font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2rem);
       font-style: normal;
       font-weight: 300;
       line-height: 1.5em;

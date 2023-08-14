@@ -1,0 +1,42 @@
+{
+  "id": "aquarelas",
+  "label": "Aquarelas",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "titulo": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Título",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "conteudo": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Conteúdo",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "imagem_destacada": {
+        "type": "Image",
+        "config": {
+          "label": "Imagem destacada",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "numero_de_referencia": {
+        "type": "Number",
+        "config": { "label": "Número de referência", "placeholder": "" }
+      }
+    }
+  }
+}

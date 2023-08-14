@@ -115,6 +115,14 @@ const WrapperHeader = styled.header`
       }
     }
   }
+  @media screen and (max-width: 820px) {
+    .nav-home {
+      max-width: 132px;
+      svg {
+        max-width: 100%;
+      }
+    }
+  }
 `;
 
 const Header = ({ activePage, pageType }) => {

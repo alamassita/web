@@ -62,6 +62,10 @@ export async function getStaticProps() {
       "depoimento.foto",
       "depoimento.conteudo",
       "depoimento.citacao",
+      "aquarelas.titulo",
+      "aquarelas.conteudo",
+      "aquarelas.imagem_destacada",
+      "aquarelas.numero_de_referencia",
     ],
   });
 

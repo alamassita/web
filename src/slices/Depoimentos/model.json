@@ -25,7 +25,11 @@
       "items": {
         "depoimento": {
           "type": "Link",
-          "config": { "label": "Depoimento", "select": "document" }
+          "config": {
+            "label": "Depoimento",
+            "select": "document",
+            "customtypes": ["depoimento"]
+          }
         }
       }
     },

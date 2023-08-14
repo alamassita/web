@@ -15,7 +15,11 @@
       "items": {
         "categoria": {
           "type": "Link",
-          "config": { "label": "Categoria", "select": "document" }
+          "config": {
+            "label": "Categoria",
+            "select": "document",
+            "customtypes": ["portfolio_categoria"]
+          }
         }
       }
     }

@@ -1,8 +1,8 @@
 {
-  "id": "lista_todos_trabalhos",
+  "id": "listar_aquarelas",
   "type": "SharedSlice",
-  "name": "ListaTodosTrabalhos",
-  "description": "ListaTodosTrabalhos",
+  "name": "ListarAquarelas",
+  "description": "ListarAquarelas",
   "variations": [
     {
       "id": "default",
@@ -21,16 +21,22 @@
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "portfolio_categoria": {
-          "type": "Link",
+        "conteudo": {
+          "type": "StructuredText",
           "config": {
-            "label": "Portfólio categoria",
-            "select": "document",
-            "customtypes": ["portfolio_categoria"]
+            "label": "Conteúdo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },
-      "items": {}
+      "items": {
+        "aquarela": {
+          "type": "Link",
+          "config": { "label": "Aquarela", "select": "document" }
+        }
+      }
     }
   ]
 }

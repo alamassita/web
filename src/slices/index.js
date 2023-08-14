@@ -16,6 +16,7 @@ export const components = {
   intro_home: dynamic(() => import("./IntroHome")),
   intro_quem_somos: dynamic(() => import("./IntroQuemSomos")),
   lista_todos_trabalhos: dynamic(() => import("./ListaTodosTrabalhos")),
+  listar_aquarelas: dynamic(() => import("./ListarAquarelas")),
   o_que_esta_incluso: dynamic(() => import("./OQueEstaIncluso")),
   our_motto: dynamic(() => import("./OurMotto")),
   quem_somos_image: dynamic(() => import("./QuemSomosImage")),

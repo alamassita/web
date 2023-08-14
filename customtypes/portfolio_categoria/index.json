@@ -65,7 +65,8 @@
             "depoimentos": { "type": "SharedSlice" },
             "intro_quem_somos": { "type": "SharedSlice" },
             "duas_colunas": { "type": "SharedSlice" },
-            "galeria": { "type": "SharedSlice" }
+            "galeria": { "type": "SharedSlice" },
+            "listar_aquarelas": { "type": "SharedSlice" }
           }
         }
       }

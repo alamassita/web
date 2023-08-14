@@ -66,7 +66,8 @@ const CtaSection = styled.div`
     line-height: 0.8em;
     letter-spacing: -0.14rem;
     text-align: right;
-    b, strong {
+    b,
+    strong {
       font-weight: 400;
       display: block;
       padding-right: 8rem;
@@ -89,22 +90,22 @@ const CtaSection = styled.div`
     margin: rem(80) 0;
     overflow: hidden;
     position: relative;
-    
+
     &::before {
       background-image: url(${InkPhotoFrame.src});
       background-size: 100% 100%;
       background-position: 50% 50%;
-      content: '';
+      content: "";
       height: 100%;
       position: absolute;
       width: 100%;
     }
-    
+
     &::after {
       //animation: ink-transition 1.5s steps(39) 0.5s forwards;
       background-image: url(${InkTransitionSprite.src});
       background-size: 100% 100%;
-      content: '';
+      content: "";
       height: 100%;
       left: 50%;
       position: absolute;
@@ -112,7 +113,6 @@ const CtaSection = styled.div`
       transform: translateX(-1.25%);
       width: 4000%;
     }
-    
     &.is-active::after {
       animation: ink-transition 1s steps(39) 0.3s forwards;
     }
@@ -120,8 +120,6 @@ const CtaSection = styled.div`
       opacity: 1;
     }
   }
-  
-
   .c-transition__img {
     height: 100%;
     object-fit: cover;
@@ -132,12 +130,12 @@ const CtaSection = styled.div`
     0% {
       transform: translateX(-1.25%);
     }
-  
+
     99% {
       transform: translateX(-98.75%);
       opacity: 1;
     }
-  
+
     100% {
       transform: translateX(-98.75%);
       opacity: 0;
@@ -151,18 +149,20 @@ const CtaSection = styled.div`
     .testimonials-inner {
       justify-content: space-between;
     }
-    .testimonials-image{
+    .testimonials-image {
       width: 35%;
     }
     .testimonials-content {
-        padding-right: calc((100vw - var(--max-width))/2 + 1rem);
-        background-position: top 4rem right calc((100vw - var(--max-width))/2 - 320px);
+      padding-right: calc((100vw - var(--max-width)) / 2 + 1rem);
+      background-position: top 4rem right
+        calc((100vw - var(--max-width)) / 2 - 320px);
     }
   }
   @media screen and (max-width: 1220px) {
     .testimonials-title h3 {
       padding-right: 6rem;
-      b, strong {
+      b,
+      strong {
         padding-right: 0;
       }
     }
@@ -181,13 +181,6 @@ const CtaSection = styled.div`
       width: 100%;
     }
   }
-  @media screen and (max-width: 720px) {
-    .testimonials-top .testimonials-top--wrapper {
-      align-items: start;
-      flex-direction: column;
-    }
-  }
-}
 `;
 
 const DefaultSection = styled.div`
@@ -239,6 +232,12 @@ const DefaultSection = styled.div`
     }
     .icon-star svg {
       width: 16px;
+    }
+    .testimonials-top .testimonials-top--wrapper {
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: flex-start;
+      grid-gap: 0.4rem;
     }
   }
 `;

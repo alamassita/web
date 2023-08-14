@@ -5,6 +5,71 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Content for Aquarelas documents
+ */
+interface AquarelasDocumentData {
+  /**
+   * Título field in *Aquarelas*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aquarelas.titulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *Aquarelas*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aquarelas.conteudo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+
+  /**
+   * Imagem destacada field in *Aquarelas*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aquarelas.imagem_destacada
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagem_destacada: prismic.ImageField<never>;
+
+  /**
+   * Número de referência field in *Aquarelas*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aquarelas.numero_de_referencia
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  numero_de_referencia: prismic.NumberField;
+}
+
+/**
+ * Aquarelas document from Prismic
+ *
+ * - **API ID**: `aquarelas`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AquarelasDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<AquarelasDocumentData>,
+    "aquarelas",
+    Lang
+  >;
+
+/**
  * Content for Portfolio Category documents
  */
 interface CategoryDocumentData {
@@ -657,7 +722,8 @@ type PortfolioCategoriaDocumentDataSlicesSlice =
   | DepoimentosSlice
   | IntroQuemSomosSlice
   | DuasColunasSlice
-  | GaleriaSlice;
+  | GaleriaSlice
+  | ListarAquarelasSlice;
 
 /**
  * Content for Portfólio Categoria documents
@@ -863,6 +929,7 @@ export type QuemSomosDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AquarelasDocument
   | CategoryDocument
   | ComoComprarDocument
   | ContatoDocument
@@ -886,7 +953,7 @@ export interface CasesPortfolioSliceDefaultItem {
    * - **API ID Path**: cases_portfolio.items[].categoria
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  categoria: prismic.ContentRelationshipField;
+  categoria: prismic.ContentRelationshipField<"portfolio_categoria">;
 }
 
 /**
@@ -1170,7 +1237,7 @@ export interface DepoimentosSliceDefaultItem {
    * - **API ID Path**: depoimentos.items[].depoimento
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  depoimento: prismic.ContentRelationshipField;
+  depoimento: prismic.ContentRelationshipField<"depoimento">;
 }
 
 /**
@@ -2244,7 +2311,7 @@ export interface ListaTodosTrabalhosSliceDefaultPrimary {
    * - **API ID Path**: lista_todos_trabalhos.primary.portfolio_categoria
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  portfolio_categoria: prismic.ContentRelationshipField;
+  portfolio_categoria: prismic.ContentRelationshipField<"portfolio_categoria">;
 }
 
 /**
@@ -2275,6 +2342,76 @@ type ListaTodosTrabalhosSliceVariation = ListaTodosTrabalhosSliceDefault;
 export type ListaTodosTrabalhosSlice = prismic.SharedSlice<
   "lista_todos_trabalhos",
   ListaTodosTrabalhosSliceVariation
+>;
+
+/**
+ * Primary content in *ListarAquarelas → Primary*
+ */
+export interface ListarAquarelasSliceDefaultPrimary {
+  /**
+   * Título field in *ListarAquarelas → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: listar_aquarelas.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Conteúdo field in *ListarAquarelas → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: listar_aquarelas.primary.conteudo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  conteudo: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ListarAquarelas → Items*
+ */
+export interface ListarAquarelasSliceDefaultItem {
+  /**
+   * Aquarela field in *ListarAquarelas → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: listar_aquarelas.items[].aquarela
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  aquarela: prismic.ContentRelationshipField;
+}
+
+/**
+ * Default variation for ListarAquarelas Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ListarAquarelasSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ListarAquarelasSliceDefaultPrimary>,
+  Simplify<ListarAquarelasSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ListarAquarelas*
+ */
+type ListarAquarelasSliceVariation = ListarAquarelasSliceDefault;
+
+/**
+ * ListarAquarelas Shared Slice
+ *
+ * - **API ID**: `listar_aquarelas`
+ * - **Description**: ListarAquarelas
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ListarAquarelasSlice = prismic.SharedSlice<
+  "listar_aquarelas",
+  ListarAquarelasSliceVariation
 >;
 
 /**
@@ -2612,6 +2749,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AquarelasDocument,
+      AquarelasDocumentData,
       CategoryDocument,
       CategoryDocumentData,
       ComoComprarDocument,
@@ -2682,6 +2821,9 @@ declare module "@prismicio/client" {
       ListaTodosTrabalhosSlice,
       ListaTodosTrabalhosSliceVariation,
       ListaTodosTrabalhosSliceDefault,
+      ListarAquarelasSlice,
+      ListarAquarelasSliceVariation,
+      ListarAquarelasSliceDefault,
       OQueEstaInclusoSlice,
       OQueEstaInclusoSliceVariation,
       OQueEstaInclusoSliceDefault,

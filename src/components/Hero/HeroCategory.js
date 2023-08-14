@@ -90,7 +90,7 @@ const HeroHome = styled.div`
     transform: translate3d(-50%, 0, 0);
     z-index: -1;
     height: auto;
-    width: clamp(min(20vw, 20rem), 510px, max(60vw, 40rem));
+    width: clamp(min(20vw, 20rem), 510px, max(50vw, 30rem));
   }
 
   .hero-category {

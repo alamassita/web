@@ -4,10 +4,11 @@
  * @param {IntroHomeProps}
  */
 
-import React from "react";
+import { useRef, useState, useEffect } from "react";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import { ButtonWaterColor } from "../../components/Button";
 
@@ -85,19 +86,29 @@ const IntroHomeWrapper = styled.div`
   }
 `;
 const IntroHome = ({ slice }) => {
+  let imageRef = useRef(null);
+  const [windowSize, setWindowSize] = useState(0);
+  let y;
+  let { scrollYProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "end start"],
+  });
+  y = useTransform(scrollYProgress, [0, 1], ["40%", "-20%"]);
+
   return (
     <IntroHomeWrapper
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      ref={imageRef}
     >
       <div className="intro-wrapper">
         <div className="intro-inner">
-          <div className="intro-image">
+          <motion.div style={{ y }} className="intro-image">
             <PrismicNextImage
               field={slice.primary.imagem_destacada}
               imgixParams={{ q: 100 }}
             />
-          </div>
+          </motion.div>
           <div className="intro-content">
             <div className="intro-content--inner">
               <PrismicRichText field={slice.primary.titulo} />

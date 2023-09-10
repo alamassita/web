@@ -73,6 +73,9 @@ export async function getStaticProps() {
   // Use the category ID to filter for posts with that category
   const pagesInCategory = await client.getAllByType("portfolio", {
     filters: [prismic.filter.at("my.portfolio.categoria", categoryID)],
+    orderings: [
+      { field: "document.first_publication_date", direction: "desc" },
+    ],
   });
 
   return {

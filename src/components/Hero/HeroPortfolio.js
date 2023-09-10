@@ -3,8 +3,10 @@ import Link from "next/link";
 
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
+import Image from "next/image";
 
 import PlantShadowImage from "../../../public/images/plant-shadow--hero.png";
+import ProdutoImage from "../../../public/images/bgProduto.jpg";
 
 import styled from "styled-components";
 const HeroSection = styled.section`
@@ -224,9 +226,15 @@ const HeroPortfolio = ({
                   </div>
                 )}
               </div>
-              {image && (
+              {/* {image && (
                 <PrismicNextImage field={image} imgixParams={{ q: 100 }} />
-              )}
+              )} */}
+              <Image
+                src={ProdutoImage.src}
+                alt="Depoimentos"
+                width={938}
+                height={922}
+              />
             </div>
           </div>
         </HeroHome>

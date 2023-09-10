@@ -7,6 +7,8 @@
 import React from "react";
 import { PrismicRichText } from "@prismicio/react";
 
+import { AnimateText } from "@/components/AnimateText";
+
 import styled from "styled-components";
 
 const OurMottWrapper = styled.section`
